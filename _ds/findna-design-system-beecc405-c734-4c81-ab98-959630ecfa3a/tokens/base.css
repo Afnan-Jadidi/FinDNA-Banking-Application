@@ -1,0 +1,4 @@
+/* FinDNA Design System — base resets shared across cards, kits, and slides */
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:var(--font-arabic);-webkit-font-smoothing:antialiased;line-height:var(--line-height-base)}
+.fd-num{font-family:var(--font-numeric),sans-serif;direction:ltr;display:inline-block;font-feature-settings:"tnum"}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/radius.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/shadows.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/styles.css">
+  <script src="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:var(--bg);font-family:'Tajawal',sans-serif}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{color:var(--primary-600)}
+    @keyframes fdGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @keyframes fdFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fdPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.8)}}
+  </style>
+</helmet>
+<div dir="rtl" style="min-height:100vh;background:var(--bg);font-family:'Tajawal',sans-serif;color:var(--text)" data-screen-label="Employee Dashboard">
+
+  <!-- Top bar -->
+  <div style="background:var(--surface);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:1.5px;color:var(--copper)">FinDNA</div>
+      <div style="width:1px;height:20px;background:var(--line)"></div>
+      <div style="font-size:14px;font-weight:700;color:var(--ink)">لوحة الموظف — نظرة العميل</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="font-size:12.5px;color:var(--text-2)">فرع الرياض الرئيسي · نورة العتيبي</div>
+      <div style="width:36px;height:36px;border-radius:12px;background:var(--primary-50);border:1px solid var(--primary-100);display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--primary)">ن</div>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:28px 32px 48px;display:flex;flex-direction:column;gap:20px;animation:fdFadeUp .35s ease both">
+
+    <!-- Customer header -->
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:24px 28px;box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:18px">
+        <div style="width:64px;height:64px;border-radius:20px;background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);display:grid;place-items:center;font-size:22px;font-weight:900;color:var(--primary)">أ</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:22px;font-weight:900;color:var(--ink);letter-spacing:-.3px">أحمد السالم</span>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="60px,22px">عميل موثّق</x-import>
+          </div>
+          <div style="font-size:12.5px;color:var(--text-2);margin-top:4px">رقم العميل <span class="fd-num" style="font-weight:600">100482913</span> · عميل منذ 2019 · راتب محوّل</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:28px">
+        <div style="text-align:center">
+          <div style="position:relative;width:84px;height:84px;margin:0 auto">
+            <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--copper) 0 82%,var(--primary-100) 82% 100%)"></div>
+            <div style="position:absolute;inset:7px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--ink);line-height:1">82</span>
+              <span style="font-size:9px;font-weight:700;color:var(--text-3)">DNA</span>
+            </div>
+          </div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--text-2);margin-top:6px">درجة الحمض المالي</div>
+        </div>
+        <div style="text-align:center">
+          <div style="position:relative;width:84px;height:84px;margin:0 auto">
+            <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--success) 0 96%,var(--primary-100) 96% 100%)"></div>
+            <div style="position:absolute;inset:7px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--ink);line-height:1">96</span>
+              <span style="font-size:9px;font-weight:700;color:var(--text-3)">من 100</span>
+            </div>
+          </div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--text-2);margin-top:6px">درجة الالتزام</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI summary -->
+    <div style="background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);border-radius:24px;padding:22px 26px;box-shadow:var(--sh-sm)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:7px;height:7px;flex:none;border-radius:99px;background:var(--copper);animation:fdPulse 2s ease infinite"></div>
+        <span style="font-size:12px;font-weight:800;color:var(--copper);letter-spacing:.5px">ملخص الذكاء الاصطناعي</span>
+      </div>
+      <div style="font-size:15px;color:var(--ink-2);line-height:1.9;margin-top:10px;max-width:900px;text-wrap:pretty">
+        يبدو العميل مؤهلًا لتمويل مركبة. لا توجد أي دفعات متأخرة خلال آخر <span class="fd-num" style="font-weight:700">24</span> شهرًا، ونسبة الدين إلى الدخل صحية عند <span class="fd-num" style="font-weight:700">21%</span>. الفائض الشهري (<span class="fd-num" style="font-weight:700">3,900</span> ريال) يدعم تمويلًا إضافيًا حتى قسط <span class="fd-num" style="font-weight:700">2,400</span> ريال شهريًا دون التأثير على أهدافه القائمة. العميل مدخر ملتزم منخفض المخاطرة — الأنسب له منتجات التمويل منخفضة الكلفة والمحافظ الاستثمارية المتحفظة.
+      </div>
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="90px,22px">مؤهل لتمويل مركبة</x-import>
+        <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="90px,22px">سجل سداد نظيف</x-import>
+        <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="90px,22px">مصروف مطاعم مرتفع</x-import>
+      </div>
+    </div>
+
+    <!-- Metrics grid -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:var(--sh-sm)">
+        <div style="font-size:12px;font-weight:700;color:var(--text-2)">نسبة الدين إلى الدخل</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--success)">21%</span>
+          <span style="font-size:11px;color:var(--text-3)">حد البنك 45%</span>
+        </div>
+        <div style="height:6px;border-radius:99px;background:var(--surface-2);margin-top:10px;overflow:hidden"><div style="height:100%;width:21%;border-radius:99px;background:var(--success);animation:fdGrow .8s ease both;transform-origin:right"></div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:var(--sh-sm)">
+        <div style="font-size:12px;font-weight:700;color:var(--text-2)">استقرار الدخل</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--ink)">94%</span>
+          <span style="font-size:11px;color:var(--text-3)">راتب ثابت 36 شهر</span>
+        </div>
+        <div style="height:6px;border-radius:99px;background:var(--surface-2);margin-top:10px;overflow:hidden"><div style="height:100%;width:94%;border-radius:99px;background:var(--primary);animation:fdGrow .8s ease both;animation-delay:.08s;transform-origin:right"></div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:var(--sh-sm)">
+        <div style="font-size:12px;font-weight:700;color:var(--text-2)">معدل الادخار</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--ink)">12%</span>
+          <span style="font-size:11px;color:var(--text-3)">من الدخل الشهري</span>
+        </div>
+        <div style="height:6px;border-radius:99px;background:var(--surface-2);margin-top:10px;overflow:hidden"><div style="height:100%;width:12%;border-radius:99px;background:var(--primary);animation:fdGrow .8s ease both;animation-delay:.16s;transform-origin:right"></div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:var(--sh-sm)">
+        <div style="font-size:12px;font-weight:700;color:var(--text-2)">مستوى المخاطرة</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <span style="font-size:22px;font-weight:800;color:var(--copper)">منخفض</span>
+          <span class="fd-num" style="font-size:11px;color:var(--text-3)">41/100</span>
+        </div>
+        <div style="height:6px;border-radius:99px;background:var(--surface-2);margin-top:10px;overflow:hidden"><div style="height:100%;width:41%;border-radius:99px;background:var(--copper-lt);animation:fdGrow .8s ease both;animation-delay:.24s;transform-origin:right"></div></div>
+      </div>
+    </div>
+
+    <!-- Two-column: financial position + goals -->
+    <div style="display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:start">
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+          <div style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:16px">الوضع المالي الشهري</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.FlowStat" label="إجمالي الدخل" value="15,700" tone="in" hint-size="100%,48px"></x-import>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.FlowStat" label="الالتزامات" value="3,280" tone="out" hint-size="100%,48px"></x-import>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.FlowStat" label="الفائض الشهري" value="3,900" tone="neutral" hint-size="100%,48px"></x-import>
+          </div>
+          <div style="border-top:1px solid var(--line-soft);margin-top:18px;padding-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;font-size:13px">
+              <span style="color:var(--text-2);font-weight:600">قرض سيارة قائم</span>
+              <span style="font-weight:700;color:var(--ink)"><span class="fd-num">1,850</span> / شهر · متبقٍ <span class="fd-num">44,400</span></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px">
+              <span style="color:var(--text-2);font-weight:600">بطاقات ائتمانية</span>
+              <span style="font-weight:700;color:var(--ink)"><span class="fd-num">650</span> / شهر</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px">
+              <span style="color:var(--text-2);font-weight:600">فواتير شهرية</span>
+              <span style="font-weight:700;color:var(--ink)"><span class="fd-num">780</span> / شهر</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+            <span style="font-size:15px;font-weight:800;color:var(--ink)">الأهلية التمويلية</span>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="60px,22px">محدّثة الآن</x-import>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+              <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل مركبة</span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:13px;font-weight:700;color:var(--text-2)">حتى <span class="fd-num">180,000</span></span>
+                <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="50px,22px">مؤهل</x-import>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+              <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل شخصي</span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:13px;font-weight:700;color:var(--text-2)">حتى <span class="fd-num">120,000</span></span>
+                <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="50px,22px">مؤهل</x-import>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+              <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل عقاري</span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:13px;font-weight:700;color:var(--text-2)">يتطلب دفعة أولى <span class="fd-num">15%</span></span>
+                <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="50px,22px">مشروط</x-import>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+          <div style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:14px">الأهداف الحالية</div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+                <span style="font-weight:700;color:var(--ink)">تويوتا كامري</span>
+                <span class="fd-num" style="font-weight:800;color:var(--primary)">42%</span>
+              </div>
+              <div style="height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden"><div style="height:100%;width:42%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-600));animation:fdGrow .8s ease both;transform-origin:right"></div></div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:5px">الإنجاز المتوقع: مارس 2028</div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+                <span style="font-weight:700;color:var(--ink)">شقة تمليك</span>
+                <span class="fd-num" style="font-weight:800;color:var(--primary)">12%</span>
+              </div>
+              <div style="height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden"><div style="height:100%;width:12%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-600));animation:fdGrow .8s ease both;animation-delay:.08s;transform-origin:right"></div></div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:5px">الإنجاز المتوقع: يونيو 2031</div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+                <span style="font-weight:700;color:var(--ink)">رحلة اليابان</span>
+                <span class="fd-num" style="font-weight:800;color:var(--primary)">68%</span>
+              </div>
+              <div style="height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden"><div style="height:100%;width:68%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-600));animation:fdGrow .8s ease both;animation-delay:.16s;transform-origin:right"></div></div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:5px">الإنجاز المتوقع: ديسمبر 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+          <div style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px">إمكانات الاستثمار</div>
+          <div style="font-size:12.5px;color:var(--text-2);line-height:1.7;margin-bottom:14px">فائض شهري ثابت غير مستثمَر — فرصة لعرض محفظة متحفظة</div>
+          <div style="background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12.5px;font-weight:700;color:var(--text-2)">قابل للاستثمار شهريًا</span>
+            <span class="fd-num" style="font-size:20px;font-weight:800;color:var(--primary)">1,500 SAR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommended products -->
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <span style="font-size:15px;font-weight:800;color:var(--ink)">منتجات موصى بها لهذا العميل</span>
+        <span style="font-size:12px;color:var(--text-3)">مرتبة حسب ملاءمة الحمض المالي</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+        <div style="border:1.5px solid var(--copper);background:linear-gradient(170deg,rgba(217,184,106,.08),#fff);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:14px;font-weight:800;color:var(--ink)">تمويل مركبة</span>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="new" hint-size="50px,22px">الأنسب</x-import>
+          </div>
+          <div style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">يغطي هدف الكامري فورًا — قسط 2,150 ريال ضمن قدرته</div>
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="copper" size="sm" hint-size="100%,36px">تقديم عرض</x-import>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:14px;font-weight:800;color:var(--ink)">محفظة استثمارية متحفظة</span>
+          <div style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">1,500 ريال شهريًا — تقرّب هدف الشقة نحو 14 شهرًا</div>
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">عرض التفاصيل</x-import>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:14px;font-weight:800;color:var(--ink)">حساب ادخار بعائد</span>
+          <div style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">يناسب نمطه الادخاري المنتظم — تحويل تلقائي شهري</div>
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">عرض التفاصيل</x-import>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:14px;font-weight:800;color:var(--ink)">سداد مبكر لقرض السيارة</span>
+          <div style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">800 ريال إضافية شهريًا تنهي القرض قبل 11 شهرًا وتوفر 14,000 ريال</div>
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">محاكاة السداد</x-import>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

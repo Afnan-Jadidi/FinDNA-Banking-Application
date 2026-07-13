@@ -1,0 +1,51 @@
+/* FinDNA Design System — Color tokens
+   Extracted verbatim from uploads/findna-design-system_1.html (RTL hackathon concept). */
+:root{
+  /* ===== Primary (brand purple) ===== */
+  --primary:#7A6DB0;
+  --primary-600:#6A5DA0;
+  --primary-700:#584C8A;
+  --primary-100:#E7E3F2;
+  --primary-50:#F2EFF8;
+
+  /* ===== Ink (deep navy — headings/text) ===== */
+  --ink:#232049;
+  --ink-2:#3A366B;
+  --ink-soft:#524E7A;
+
+  /* ===== FinDNA accent (copper/gold — "riyal" & desert motif) ===== */
+  --copper:#C6803E;
+  --copper-lt:#E0A45E;
+  --gold:#D9B86A;
+
+  /* ===== Neutrals (cool grey w/ purple undertone) ===== */
+  --bg:#ECEBF0;
+  --surface:#FFFFFF;
+  --surface-2:#F4F3F7;
+  --line:#E0DEE8;
+  --line-soft:#EDECF1;
+
+  --text:#232049;
+  --text-2:#6B6890;
+  --text-3:#9895B5;
+
+  /* ===== Semantic ===== */
+  --success:#3DBF8F;
+  --danger:#E0564E;
+  --warn:#E0A45E;
+  --info:#7A6DB0;
+
+  /* ===== Semantic aliases ===== */
+  --surface-card: var(--surface);
+  --surface-page: var(--bg);
+  --border-default: var(--line);
+  --border-soft: var(--line-soft);
+  --text-heading: var(--ink);
+  --text-body: var(--text);
+  --text-muted: var(--text-2);
+  --text-faint: var(--text-3);
+  --action-primary: var(--primary);
+  --action-primary-hover: var(--primary-600);
+  --action-primary-active: var(--primary-700);
+  --action-primary-soft: var(--primary-100);
+}

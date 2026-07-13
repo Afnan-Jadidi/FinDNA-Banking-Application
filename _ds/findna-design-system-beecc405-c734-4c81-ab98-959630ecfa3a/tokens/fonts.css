@@ -1,0 +1,4 @@
+/* FinDNA Design System — Webfonts
+   Source file loads these from Google Fonts CDN (no self-hosted binaries were
+   provided). Kept as a CDN @import so consumers get the exact same faces. */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');

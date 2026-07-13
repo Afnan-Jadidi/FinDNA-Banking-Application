@@ -1,0 +1,6 @@
+/* FinDNA Design System — Shadow tokens (soft ink-tinted, low-opacity) */
+:root{
+  --sh-sm:0 2px 8px -4px rgba(35,32,73,.12);
+  --sh-md:0 8px 24px -12px rgba(35,32,73,.16);
+  --sh-lg:0 16px 40px -16px rgba(35,32,73,.2);
+}

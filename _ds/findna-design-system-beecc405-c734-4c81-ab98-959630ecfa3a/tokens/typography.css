@@ -1,0 +1,17 @@
+/* FinDNA Design System — Typography tokens
+   Tajawal (Arabic, RTL body/display) + Space Grotesk (Latin numerals/data). */
+:root{
+  --font-arabic: 'Tajawal', sans-serif;
+  --font-numeric: 'Space Grotesk', sans-serif;
+
+  /* Type scale — size / weight, taken directly from the source spec (do not round) */
+  --text-display-size: 38px;   --text-display-weight: 900; --text-display-tracking: -1px;
+  --text-h1-size: 28px;        --text-h1-weight: 800;
+  --text-h2-size: 22px;        --text-h2-weight: 800;
+  --text-h3-size: 18px;        --text-h3-weight: 700;
+  --text-body-size: 15px;      --text-body-weight: 400;
+  --text-caption-size: 12.5px; --text-caption-weight: 500;
+  --text-numeric-size: 32px;   --text-numeric-weight: 700;
+
+  --line-height-base: 1.5;
+}

@@ -85,13 +85,13 @@
         <div style="width:7px;height:7px;flex:none;border-radius:99px;background:var(--copper);animation:fdPulse 2s ease infinite"></div>
         <span style="font-size:12px;font-weight:800;color:var(--copper);letter-spacing:.5px">ملخص الذكاء الاصطناعي</span>
       </div>
-      <div style="font-size:15px;color:var(--ink-2);line-height:1.9;margin-top:10px;max-width:900px;text-wrap:pretty">
+      <div data-ai-summary style="font-size:15px;color:var(--ink-2);line-height:1.9;margin-top:10px;max-width:900px;text-wrap:pretty">
         يبدو العميل مؤهلًا لتمويل مركبة. لا توجد أي دفعات متأخرة خلال آخر <span class="fd-num" style="font-weight:700">24</span> شهرًا، ونسبة الدين إلى الدخل صحية عند <span class="fd-num" style="font-weight:700">21%</span>. الفائض الشهري (<span class="fd-num" style="font-weight:700">3,900</span> ريال) يدعم تمويلًا إضافيًا حتى قسط <span class="fd-num" style="font-weight:700">2,400</span> ريال شهريًا دون التأثير على أهدافه القائمة. العميل مدخر ملتزم منخفض المخاطرة — الأنسب له منتجات التمويل منخفضة الكلفة والمحافظ الاستثمارية المتحفظة.
       </div>
       <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
-        <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="90px,22px">مؤهل لتمويل مركبة</x-import>
-        <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="90px,22px">سجل سداد نظيف</x-import>
-        <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="90px,22px">مصروف مطاعم مرتفع</x-import>
+        <span data-badge><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="90px,22px">مؤهل لتمويل مركبة</x-import></span>
+        <span data-badge><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="90px,22px">سجل سداد نظيف</x-import></span>
+        <span data-badge><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="90px,22px">مصروف مطاعم مرتفع</x-import></span>
       </div>
     </div>
 
@@ -164,25 +164,25 @@
             <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="60px,22px">محدّثة الآن</x-import>
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+            <div data-eligibility="car_loan" style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
               <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل مركبة</span>
               <div style="display:flex;align-items:center;gap:10px">
-                <span style="font-size:13px;font-weight:700;color:var(--text-2)">حتى <span class="fd-num">180,000</span></span>
-                <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="50px,22px">مؤهل</x-import>
+                <span data-note style="font-size:13px;font-weight:700;color:var(--text-2)">حتى <span class="fd-num">180,000</span></span>
+                <span data-status><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="50px,22px">مؤهل</x-import></span>
               </div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+            <div data-eligibility="personal_loan" style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
               <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل شخصي</span>
               <div style="display:flex;align-items:center;gap:10px">
-                <span style="font-size:13px;font-weight:700;color:var(--text-2)">حتى <span class="fd-num">120,000</span></span>
-                <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="50px,22px">مؤهل</x-import>
+                <span data-note style="font-size:13px;font-weight:700;color:var(--text-2)">حتى <span class="fd-num">120,000</span></span>
+                <span data-status><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="50px,22px">مؤهل</x-import></span>
               </div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+            <div data-eligibility="mortgage" style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
               <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل عقاري</span>
               <div style="display:flex;align-items:center;gap:10px">
-                <span style="font-size:13px;font-weight:700;color:var(--text-2)">يتطلب دفعة أولى <span class="fd-num">15%</span></span>
-                <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="50px,22px">مشروط</x-import>
+                <span data-note style="font-size:13px;font-weight:700;color:var(--text-2)">يتطلب دفعة أولى <span class="fd-num">15%</span></span>
+                <span data-status><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="50px,22px">مشروط</x-import></span>
               </div>
             </div>
           </div>
@@ -237,28 +237,28 @@
         <span style="font-size:15px;font-weight:800;color:var(--ink)">منتجات موصى بها لهذا العميل</span>
         <span style="font-size:12px;color:var(--text-3)">مرتبة حسب ملاءمة الحمض المالي</span>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
-        <div style="border:1.5px solid var(--copper);background:linear-gradient(170deg,rgba(217,184,106,.08),#fff);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+      <div data-recommendations style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+        <div data-rec-card style="border:1.5px solid var(--copper);background:linear-gradient(170deg,rgba(217,184,106,.08),#fff);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <span style="font-size:14px;font-weight:800;color:var(--ink)">تمويل مركبة</span>
+            <span data-rec-title style="font-size:14px;font-weight:800;color:var(--ink)">تمويل مركبة</span>
             <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="new" hint-size="50px,22px">الأنسب</x-import>
           </div>
-          <div style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">يغطي هدف الكامري فورًا — قسط 2,150 ريال ضمن قدرته</div>
+          <div data-rec-reason style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">يغطي هدف الكامري فورًا — قسط 2,150 ريال ضمن قدرته</div>
           <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="copper" size="sm" hint-size="100%,36px">تقديم عرض</x-import>
         </div>
-        <div style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
-          <span style="font-size:14px;font-weight:800;color:var(--ink)">محفظة استثمارية متحفظة</span>
-          <div style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">1,500 ريال شهريًا — تقرّب هدف الشقة نحو 14 شهرًا</div>
+        <div data-rec-card style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span data-rec-title style="font-size:14px;font-weight:800;color:var(--ink)">محفظة استثمارية متحفظة</span>
+          <div data-rec-reason style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">1,500 ريال شهريًا — تقرّب هدف الشقة نحو 14 شهرًا</div>
           <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">عرض التفاصيل</x-import>
         </div>
-        <div style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
-          <span style="font-size:14px;font-weight:800;color:var(--ink)">حساب ادخار بعائد</span>
-          <div style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">يناسب نمطه الادخاري المنتظم — تحويل تلقائي شهري</div>
+        <div data-rec-card style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span data-rec-title style="font-size:14px;font-weight:800;color:var(--ink)">حساب ادخار بعائد</span>
+          <div data-rec-reason style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">يناسب نمطه الادخاري المنتظم — تحويل تلقائي شهري</div>
           <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">عرض التفاصيل</x-import>
         </div>
-        <div style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
-          <span style="font-size:14px;font-weight:800;color:var(--ink)">سداد مبكر لقرض السيارة</span>
-          <div style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">800 ريال إضافية شهريًا تنهي القرض قبل 11 شهرًا وتوفر 14,000 ريال</div>
+        <div data-rec-card style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span data-rec-title style="font-size:14px;font-weight:800;color:var(--ink)">سداد مبكر لقرض السيارة</span>
+          <div data-rec-reason style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">800 ريال إضافية شهريًا تنهي القرض قبل 11 شهرًا وتوفر 14,000 ريال</div>
           <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">محاكاة السداد</x-import>
         </div>
       </div>
@@ -267,5 +267,169 @@
   </div>
 </div>
 </x-dc>
+
+<style>
+@keyframes fdShimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.fd-loading {
+  background: linear-gradient(90deg, #f0eef8 25%, #e0ddf0 50%, #f0eef8 75%);
+  background-size: 400px 100%;
+  animation: fdShimmer 1.4s infinite;
+  border-radius: 8px;
+  color: transparent !important;
+  min-height: 1em;
+}
+.fd-badge-ok    { background: #e6f8f2 !important; color: #1a7a55 !important; }
+.fd-badge-warn  { background: #fdf3e3 !important; color: #a05c00 !important; }
+.fd-badge-danger{ background: #fde8e7 !important; color: #8b2020 !important; }
+.fd-status-ok   { color: #3DBF8F !important; }
+.fd-status-warn { color: #E0A45E !important; }
+.fd-status-danger{ color: #E0564E !important; }
+</style>
+
+<script>
+(function () {
+  const CUSTOMER_DATA = {
+    customer: {
+      id: "100482913",
+      name: "أحمد السالم",
+      salary: 15700,
+      additional_income: 0,
+      balance: 44400,
+      obligations: { car_loan: 1850, credit_cards: 650, monthly_bills: 780, personal_loan: 0, mortgage: 0 },
+      total_obligations: 3280,
+      monthly_surplus: 3900,
+      dna_score: 82,
+      commitment_score: 96,
+      risk_level: "low",
+      savings_rate: 0.12,
+      income_stability: 0.94,
+      dti_ratio: 0.21,
+      spending_behavior: { restaurant_spending: 1860, weekend_spending_pct: 0.38, late_payments_24m: 0, impulse_score: 27 },
+      loan_history: { car_loan_remaining: 44400, car_loan_monthly: 1850, on_time_payments_streak: 24 },
+      goals: [
+        { type: "car",       name: "تويوتا كامري",  target: 123000, saved: 52000,  deadline: "2028-03", progress: 0.42 },
+        { type: "apartment", name: "شقة تمليك",     target: 585000, saved: 70200,  deadline: "2031-06", progress: 0.12 },
+        { type: "travel",    name: "رحلة اليابان",  target: 25000,  saved: 17000,  deadline: "2026-12", progress: 0.68 }
+      ]
+    }
+  };
+
+  function safeParseJSON(raw) {
+    let text = (raw || '').trim();
+    text = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '');
+    const start = text.indexOf('{');
+    const end   = text.lastIndexOf('}');
+    if (start === -1 || end === -1) throw new Error('No JSON found');
+    return JSON.parse(text.slice(start, end + 1));
+  }
+
+  async function callAgent(mode, data) {
+    const res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'findna-agent',
+        messages: [{ role: 'user', content: `[${mode}]\n` + JSON.stringify(data) }],
+        stream: false
+      })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    // The endpoint always responds as text/event-stream (SSE), even with stream:false,
+    // so we read the raw body and stitch the delta.content chunks back together.
+    const raw = await res.text();
+    let text = '';
+    for (const line of raw.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed.startsWith('data:')) continue;
+      const payload = trimmed.slice(5).trim();
+      if (payload === '[DONE]') continue;
+      let evt;
+      try { evt = JSON.parse(payload); } catch { continue; }
+      const content = evt?.choices?.[0]?.delta?.content ?? evt?.choices?.[0]?.message?.content;
+      if (typeof content === 'string') text += content;
+    }
+    return safeParseJSON(text);
+  }
+
+  async function loadDashboard() {
+    console.log('[FinDNA] 🧬 Calling agent...');
+
+    const summaryEl = document.querySelector('[data-ai-summary]');
+    if (summaryEl) {
+      summaryEl.dataset.orig = summaryEl.textContent;
+      summaryEl.classList.add('fd-loading');
+    }
+
+    try {
+      const r = await callAgent('UC4', CUSTOMER_DATA);
+      console.log('[FinDNA] ✅', r);
+
+      // Summary
+      if (summaryEl) {
+        summaryEl.classList.remove('fd-loading');
+        summaryEl.textContent = r.summary;
+      }
+
+      // Badges
+      const badgeEls = document.querySelectorAll('[data-badge]');
+      (r.badges || []).forEach((b, i) => {
+        if (badgeEls[i]) {
+          badgeEls[i].textContent = b.text;
+          badgeEls[i].className = badgeEls[i].className.replace(/fd-badge-\w+/g, '');
+          badgeEls[i].classList.add('fd-badge-' + b.tone);
+        }
+      });
+
+      // Eligibility cards
+      ['car_loan', 'personal_loan', 'mortgage'].forEach(key => {
+        const card = document.querySelector(`[data-eligibility="${key}"]`);
+        const data = r.eligibility?.[key];
+        if (!card || !data) return;
+
+        const statusEl = card.querySelector('[data-status]');
+        const noteEl   = card.querySelector('[data-note]');
+        if (statusEl) {
+          statusEl.textContent = data.status;
+          statusEl.className = statusEl.className.replace(/fd-status-\w+/g, '');
+          statusEl.classList.add('fd-status-' + data.tone);
+        }
+        if (noteEl) noteEl.textContent = data.note;
+      });
+
+      // Recommendations
+      const recWrapper = document.querySelector('[data-recommendations]');
+      if (recWrapper && r.recommendations?.length) {
+        const cards = recWrapper.querySelectorAll('[data-rec-card]');
+        r.recommendations.forEach((rec, i) => {
+          if (cards[i]) {
+            const t = cards[i].querySelector('[data-rec-title]');
+            const d = cards[i].querySelector('[data-rec-reason]');
+            if (t) t.textContent = rec.title;
+            if (d) d.textContent = rec.reason;
+          }
+        });
+      }
+
+      console.log('[FinDNA] 🎯 Done');
+    } catch (err) {
+      console.error('[FinDNA] ❌', err);
+      if (summaryEl) {
+        summaryEl.classList.remove('fd-loading');
+        summaryEl.textContent = summaryEl.dataset.orig || 'تعذّر تحميل التحليل.';
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(loadDashboard, 500));
+  } else {
+    setTimeout(loadDashboard, 500);
+  }
+})();
+</script>
+
 </body>
 </html>

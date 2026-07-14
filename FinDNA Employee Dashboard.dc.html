@@ -187,6 +187,19 @@
             </div>
           </div>
         </div>
+
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+            <span style="font-size:15px;font-weight:800;color:var(--ink)">قرار أهلية القرض (تمويل عقاري)</span>
+            <span data-uc3-decision style="font-size:13px;font-weight:800;color:var(--copper)">جارٍ التقييم...</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:8px">
+            الحد الأقصى: <span data-uc3-amount class="fd-num" style="font-weight:700;color:var(--ink)"></span>
+          </div>
+          <div data-uc3-reason style="font-size:13px;color:var(--ink-2);line-height:1.7;margin-bottom:8px"></div>
+          <div data-uc3-conditions style="font-size:12px;color:var(--text-2);line-height:1.7;margin-bottom:8px"></div>
+          <div data-uc3-risk style="font-size:12px;color:var(--danger);line-height:1.7"></div>
+        </div>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:14px">
@@ -327,15 +340,23 @@
   }
 
   async function callAgent(mode, data) {
-    const res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'findna-agent',
-        messages: [{ role: 'user', content: `[${mode}]\n` + JSON.stringify(data) }],
-        stream: false
-      })
-    });
+    const _controller = new AbortController();
+    const _timeout = setTimeout(() => _controller.abort(), 180000);
+    let res;
+    try {
+      res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: _controller.signal,
+        body: JSON.stringify({
+          model: 'findna-agent',
+          messages: [{ role: 'user', content: `[${mode}]\n` + JSON.stringify(data) }],
+          stream: false
+        })
+      });
+    } finally {
+      clearTimeout(_timeout);
+    }
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     // The endpoint always responds as text/event-stream (SSE), even with stream:false,
     // so we read the raw body and stitch the delta.content chunks back together.
@@ -415,18 +436,74 @@
 
       console.log('[FinDNA] 🎯 Done');
     } catch (err) {
-      console.error('[FinDNA] ❌', err);
+      if (err.name === 'AbortError') {
+        console.warn('[FinDNA] agent request timed out after 3 minutes');
+      } else {
+        console.error('[FinDNA] ❌', err);
+      }
       if (summaryEl) {
         summaryEl.classList.remove('fd-loading');
-        summaryEl.textContent = summaryEl.dataset.orig || 'تعذّر تحميل التحليل.';
+        summaryEl.textContent = err.name === 'AbortError'
+          ? 'تعذّر تحميل التحليل — انتهت مهلة الاتصال. حاول تحديث الصفحة.'
+          : (summaryEl.dataset.orig || 'تعذّر تحميل التحليل.');
       }
     }
   }
 
+  async function loadUC3() {
+    const decisionEl = document.querySelector('[data-uc3-decision]');
+    const CUSTOMER_DATA_UC3 = {
+      customer: {
+        name: "أحمد السالم",
+        salary: 15700,
+        dna_score: 82,
+        dti_ratio: 0.21,
+        income_stability: 0.94,
+        savings_rate: 0.12,
+        requested_loan: { type: "عقاري", amount: 850000, term_months: 240 },
+        obligations: { car_loan: 1850, credit_cards: 650, monthly_bills: 780 }
+      }
+    };
+    try {
+      const r = await callAgent('UC3', CUSTOMER_DATA_UC3);
+      console.log('[FinDNA] UC3 ✅', r);
+
+      if (decisionEl) {
+        decisionEl.textContent = `${r.approval_status ?? ''} (${r.current_approval_probability ?? 0}%)`;
+      }
+      const amountEl = document.querySelector('[data-uc3-amount]');
+      if (amountEl) {
+        const max = r.best_product?.max_amount;
+        const monthly = r.best_product?.estimated_monthly;
+        amountEl.textContent = max != null
+          ? `${Number(max).toLocaleString('en-US')} ريال${monthly != null ? ` — قسط تقديري ${Number(monthly).toLocaleString('en-US')}` : ''}`
+          : '';
+      }
+      const reasonEl = document.querySelector('[data-uc3-reason]');
+      if (reasonEl) reasonEl.textContent = r.best_product?.reason ?? '';
+      const conditionsEl = document.querySelector('[data-uc3-conditions]');
+      if (conditionsEl) {
+        conditionsEl.textContent = (r.blocking_factors?.length ? r.blocking_factors : []).join(' • ');
+      }
+      const riskEl = document.querySelector('[data-uc3-risk]');
+      if (riskEl && r.dti_analysis) {
+        const d = r.dti_analysis;
+        riskEl.textContent = `نسبة الدين بعد التمويل: ${d.dti_after_loan}% (حد البنك ${d.bank_limit}%، الهامش المتبقي ${d.headroom}%)`;
+      }
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        console.warn('[FinDNA] UC3 request timed out after 3 minutes');
+      } else {
+        console.error('[FinDNA] UC3 ❌', err);
+      }
+      if (decisionEl) decisionEl.textContent = 'تعذّر التقييم — انتهت مهلة الاتصال أو حدث خطأ.';
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(loadDashboard, 500));
+    document.addEventListener('DOMContentLoaded', () => setTimeout(() => { loadDashboard(); loadUC3(); }, 500));
   } else {
-    setTimeout(loadDashboard, 500);
+    setTimeout(() => { loadDashboard(); loadUC3(); }, 500);
   }
 })();
 </script>

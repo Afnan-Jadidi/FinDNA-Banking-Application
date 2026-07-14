@@ -220,7 +220,7 @@
           <div style="width:7px;height:7px;flex:none;border-radius:99px;background:var(--copper);animation:fdPulse 2s ease infinite"></div>
           <span style="font-size:11.5px;font-weight:800;color:var(--copper);letter-spacing:.5px;white-space:nowrap">رؤية اليوم</span>
         </div>
-        <div style="font-size:14px;color:var(--ink-2);line-height:1.75;margin-top:8px;text-wrap:pretty">التزمت بجميع أقساطك هذا الشهر. مصروف المطاعم ارتفع <span class="fd-num" style="font-weight:700;color:var(--danger)">18%</span> — إن استمر، سيتأخر هدف السيارة <span class="fd-num" style="font-weight:700">23</span> يومًا.</div>
+        <div style="font-size:14px;color:var(--ink-2);line-height:1.75;margin-top:8px;text-wrap:pretty">{{ aiDailyInsight }}</div>
         <div style="font-size:12px;font-weight:700;color:var(--primary);margin-top:8px">عرض التحليل الكامل ‹</div>
       </div>
 
@@ -401,7 +401,7 @@
           </div>
         </div>
         <div>
-          <div style="font-size:17px;font-weight:900;color:var(--ink)">مدخر ملتزم</div>
+          <div style="font-size:17px;font-weight:900;color:var(--ink)">{{ dnaPersonality }}</div>
           <div style="font-size:12.5px;color:var(--text-2);line-height:1.7;margin-top:4px;text-wrap:pretty">شخصيتك المالية تميل للادخار المنتظم مع التزام استثنائي بالأقساط، وحذر من المخاطرة.</div>
         </div>
       </div>
@@ -488,11 +488,7 @@
           <span style="font-size:11.5px;font-weight:800;color:var(--copper);letter-spacing:.5px">إحاطة الصباح</span>
           <span class="fd-num" style="font-size:11px;color:var(--text-3)">7:30</span>
         </div>
-        <div style="font-size:14px;color:var(--ink-2);line-height:1.85;margin-top:10px;text-wrap:pretty">
-          صباح الخير أحمد. حلّلت إنفاقك هذا الأسبوع:<br>
-          <span class="fd-num" style="font-weight:700;color:var(--danger)">38%</span> من مصروفك تركّز في نهاية الأسبوع، والتزامك بالأقساط ما زال كاملًا.<br>
-          خفض إنفاق نهاية الأسبوع <span class="fd-num" style="font-weight:700;color:var(--copper)">150</span> ريالًا يعيد هدف السيارة إلى مساره.
-        </div>
+        <div style="font-size:14px;color:var(--ink-2);line-height:1.85;margin-top:10px;text-wrap:pretty">{{ aiMorningBriefing }}</div>
       </div>
 
       <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:12px">
@@ -500,8 +496,8 @@
 
         <div style="border:1px solid var(--line-soft);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px">
           <div style="flex:1">
-            <div style="font-size:13px;font-weight:700;color:var(--ink)">خفّض مصروف المطاعم 300 ريال</div>
-            <div style="font-size:11.5px;color:var(--text-2);margin-top:3px">يعيد هدف السيارة إلى مساره</div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink)">{{ aiRec1Title }}</div>
+            <div style="font-size:11.5px;color:var(--text-2);margin-top:3px">{{ aiRec1Subtitle }}</div>
           </div>
           <sc-if value="{{ rec1Applied }}" hint-placeholder-val="{{ false }}">
             <span style="font-size:12px;font-weight:800;color:var(--success);white-space:nowrap">✓ مطبّقة</span>
@@ -513,8 +509,8 @@
 
         <div style="border:1px solid var(--line-soft);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px">
           <div style="flex:1">
-            <div style="font-size:13px;font-weight:700;color:var(--ink)">حوّل 500 ريال إلى الاستثمار</div>
-            <div style="font-size:11.5px;color:var(--text-2);margin-top:3px">يقرّب هدف المنزل 18 يومًا</div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink)">{{ aiRec2Title }}</div>
+            <div style="font-size:11.5px;color:var(--text-2);margin-top:3px">{{ aiRec2Subtitle }}</div>
           </div>
           <sc-if value="{{ rec2Applied }}" hint-placeholder-val="{{ false }}">
             <span style="font-size:12px;font-weight:800;color:var(--success);white-space:nowrap">✓ مطبّقة</span>
@@ -526,8 +522,8 @@
 
         <div style="border:1px solid var(--line-soft);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px">
           <div style="flex:1">
-            <div style="font-size:13px;font-weight:700;color:var(--ink)">زد ادخارك الأسبوعي 150 ريالًا</div>
-            <div style="font-size:11.5px;color:var(--text-2);margin-top:3px">يرفع درجة حمضك المالي إلى 85</div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink)">{{ aiRec3Title }}</div>
+            <div style="font-size:11.5px;color:var(--text-2);margin-top:3px">{{ aiRec3Subtitle }}</div>
           </div>
           <sc-if value="{{ rec3Applied }}" hint-placeholder-val="{{ false }}">
             <span style="font-size:12px;font-weight:800;color:var(--success);white-space:nowrap">✓ مطبّقة</span>
@@ -978,6 +974,19 @@ class Component extends DCLogic {
     servicesOpen: false,
     recConfirm: null,
     stacksBoost: false,
+    aiMorningBriefing: 'جارٍ تحميل تحليلك المالي...',
+    aiDailyInsight: '',
+    aiRec1Title: '',
+    aiRec1Subtitle: '',
+    aiRec2Title: '',
+    aiRec2Subtitle: '',
+    aiRec3Title: '',
+    aiRec3Subtitle: '',
+    aiLoaded: false,
+    dnaPersonality: 'جارٍ التحليل...',
+    dnaStrengths: '',
+    dnaWeaknesses: '',
+    dnaRecommendations: '',
   };
 
   num(s) {
@@ -992,7 +1001,152 @@ class Component extends DCLogic {
     this._toastT = setTimeout(() => this.setState({ toast: null }), 3800);
   }
 
+  componentDidMount() { this._loadAIContent(); }
+
   componentWillUnmount() { clearTimeout(this._toastT); clearTimeout(this._genT); clearTimeout(this._stackT); }
+
+  async _loadAIContent() {
+    const CUSTOMER_DATA = {
+      customer: {
+        id: "100482913",
+        name: "أحمد السالم",
+        salary: 15700,
+        dna_score: 82,
+        commitment_score: 96,
+        risk_level: "low",
+        savings_rate: 0.12,
+        income_stability: 0.94,
+        dti_ratio: 0.21,
+        monthly_surplus: 3900,
+        total_obligations: 3280,
+        spending_behavior: { restaurant_spending: 1860, weekend_spending_pct: 0.38, late_payments_24m: 0, impulse_score: 27 },
+        goals: [
+          { type: "car",       name: "تويوتا كامري",  target: 123000, saved: 52000,  deadline: "2028-03", progress: 0.42 },
+          { type: "apartment", name: "شقة تمليك",     target: 585000, saved: 70200,  deadline: "2031-06", progress: 0.12 },
+          { type: "travel",    name: "رحلة اليابان",  target: 25000,  saved: 17000,  deadline: "2026-12", progress: 0.68 }
+        ]
+      }
+    };
+
+    const _controller = new AbortController();
+    const _timeout = setTimeout(() => _controller.abort(), 180000);
+    try {
+      const res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: _controller.signal,
+        body: JSON.stringify({
+          model: 'findna-agent',
+          messages: [{ role: 'user', content: '[UC2]\n' + JSON.stringify(CUSTOMER_DATA) }],
+          stream: false
+        })
+      });
+      // The endpoint always responds as text/event-stream (SSE), even with stream:false,
+      // so we read the raw body and stitch the delta.content chunks back together.
+      const raw = await res.text();
+      let text = '';
+      for (const line of raw.split('\n')) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data:')) continue;
+        const payload = trimmed.slice(5).trim();
+        if (payload === '[DONE]') continue;
+        let evt;
+        try { evt = JSON.parse(payload); } catch { continue; }
+        const content = evt?.choices?.[0]?.delta?.content ?? evt?.choices?.[0]?.message?.content;
+        if (typeof content === 'string') text += content;
+      }
+      text = text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '');
+      const start = text.indexOf('{');
+      const end   = text.lastIndexOf('}');
+      const r = JSON.parse(text.slice(start, end + 1));
+
+      this.setState({
+        aiMorningBriefing: r.morning_briefing || '',
+        aiDailyInsight:    r.daily_insight    || '',
+        aiRec1Title:    r.recommendations?.[0]?.title    || '',
+        aiRec1Subtitle: r.recommendations?.[0]?.subtitle || '',
+        aiRec2Title:    r.recommendations?.[1]?.title    || '',
+        aiRec2Subtitle: r.recommendations?.[1]?.subtitle || '',
+        aiRec3Title:    r.recommendations?.[2]?.title    || '',
+        aiRec3Subtitle: r.recommendations?.[2]?.subtitle || '',
+        aiLoaded: true,
+      });
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        console.warn('[FinDNA App] agent request timed out after 3 minutes');
+        this.setState({ aiMorningBriefing: 'تعذّر تحميل المساعد — انتهت مهلة الاتصال.' });
+      } else {
+        console.error('[FinDNA App] ❌', err);
+      }
+    } finally {
+      clearTimeout(_timeout);
+    }
+  }
+
+  async _runUC1() {
+    const CUSTOMER_DATA_UC1 = {
+      customer: {
+        name: "أحمد السالم",
+        age: 34,
+        salary: 15700,
+        job_sector: "حكومي",
+        city: "الرياض",
+        monthly_expenses: 8200,
+        savings: 45000,
+        goals: ["شراء منزل", "تعليم الأبناء"],
+        obligations: { car_loan: 1850, credit_cards: 650, monthly_bills: 780 }
+      }
+    };
+
+    const _controller = new AbortController();
+    const _timeout = setTimeout(() => _controller.abort(), 180000);
+    try {
+      const res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: _controller.signal,
+        body: JSON.stringify({
+          model: 'findna-agent',
+          messages: [{ role: 'user', content: '[UC1]\n' + JSON.stringify(CUSTOMER_DATA_UC1) }],
+          stream: false
+        })
+      });
+      const raw = await res.text();
+      let text = '';
+      for (const line of raw.split('\n')) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data:')) continue;
+        const payload = trimmed.slice(5).trim();
+        if (payload === '[DONE]') continue;
+        let evt;
+        try { evt = JSON.parse(payload); } catch { continue; }
+        const content = evt?.choices?.[0]?.delta?.content ?? evt?.choices?.[0]?.message?.content;
+        if (typeof content === 'string') text += content;
+      }
+      text = text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '');
+      const start = text.indexOf('{');
+      const end   = text.lastIndexOf('}');
+      const r = JSON.parse(text.slice(start, end + 1));
+
+      this.setState({
+        generating: false,
+        screen: 'home',
+        dnaPersonality: r.personality?.label || this.state.dnaPersonality,
+        dnaStrengths: (r.strengths || []).join(' • '),
+        dnaWeaknesses: (r.weaknesses || []).join(' • '),
+        dnaRecommendations: (r.recommendations || []).map(x => x.action).join(' • '),
+      });
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        console.warn('[FinDNA App] UC1 request timed out after 3 minutes');
+      } else {
+        console.error('[FinDNA App] UC1 ❌', err);
+      }
+      this.setState({ generating: false, screen: 'home' });
+    } finally {
+      clearTimeout(_timeout);
+    }
+  }
 
   renderVals() {
     const s = this.state;
@@ -1062,7 +1216,7 @@ class Component extends DCLogic {
     const obNext = () => {
       if (s.obStep < 5) { this.setState({ obStep: s.obStep + 1 }); return; }
       this.setState({ generating: true });
-      this._genT = setTimeout(() => this.setState({ generating: false, screen: 'home' }), 2000);
+      this._runUC1();
     };
 
     // --- money / budget ---
@@ -1311,6 +1465,21 @@ class Component extends DCLogic {
       investDays,
 
       navItems,
+
+      // ai content (AI-generated)
+      aiMorningBriefing: s.aiMorningBriefing,
+      aiDailyInsight: s.aiDailyInsight,
+      aiRec1Title: s.aiRec1Title,
+      aiRec1Subtitle: s.aiRec1Subtitle,
+      aiRec2Title: s.aiRec2Title,
+      aiRec2Subtitle: s.aiRec2Subtitle,
+      aiRec3Title: s.aiRec3Title,
+      aiRec3Subtitle: s.aiRec3Subtitle,
+      aiLoaded: s.aiLoaded,
+      dnaPersonality: s.dnaPersonality,
+      dnaStrengths: s.dnaStrengths,
+      dnaWeaknesses: s.dnaWeaknesses,
+      dnaRecommendations: s.dnaRecommendations,
     };
   }
 }

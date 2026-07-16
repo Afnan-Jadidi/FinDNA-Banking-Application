@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/radius.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/shadows.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/tokens/base.css">
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/styles.css">
+  <script src="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:var(--bg);font-family:'Tajawal',sans-serif}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{color:var(--primary-600)}
+    @keyframes fdGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @keyframes fdFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fdPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.8)}}
+  </style>
+</helmet>
+<div dir="rtl" style="min-height:100vh;background:var(--bg);font-family:'Tajawal',sans-serif;color:var(--text)" data-screen-label="Employee Dashboard — Sara">
+
+  <!-- Top bar -->
+  <div style="background:var(--surface);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10">
+    <div style="display:flex;align-items:center;gap:14px">
+      <a href="FinDNA Customer Search.dc.html" title="العودة للبحث" style="display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--text-2);border:1px solid var(--line);border-radius:99px;padding:7px 12px;transition:color .2s,border-color .2s" style-hover="color:var(--primary);border-color:var(--primary)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>العملاء</a>
+      <div style="width:1px;height:20px;background:var(--line)"></div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:1.5px;color:var(--copper)">FinDNA</div>
+      <div style="width:1px;height:20px;background:var(--line)"></div>
+      <div style="font-size:14px;font-weight:700;color:var(--ink)">لوحة الموظف — نظرة العميل</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="font-size:12.5px;color:var(--text-2)">فرع الرياض الرئيسي · نورة العتيبي</div>
+      <div style="width:36px;height:36px;border-radius:12px;background:var(--primary-50);border:1px solid var(--primary-100);display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--primary)">ن</div>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:28px 32px 48px;display:flex;flex-direction:column;gap:20px;animation:fdFadeUp .35s ease both">
+
+    <!-- Customer header -->
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:24px 28px;box-shadow:var(--sh-sm);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:18px">
+        <div style="width:64px;height:64px;border-radius:20px;background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);display:grid;place-items:center;font-size:22px;font-weight:900;color:var(--primary)">س</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:22px;font-weight:900;color:var(--ink);letter-spacing:-.3px">سارة القحطاني</span>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="60px,22px">عميل موثّق</x-import>
+          </div>
+          <div style="font-size:12.5px;color:var(--text-2);margin-top:4px">رقم العميل <span class="fd-num" style="font-weight:600">100731544</span> · عميلة منذ 2021 · راتب محوّل</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:28px">
+        <div style="text-align:center">
+          <div style="position:relative;width:84px;height:84px;margin:0 auto">
+            <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--copper) 0 74%,var(--primary-100) 74% 100%)"></div>
+            <div style="position:absolute;inset:7px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--ink);line-height:1">74</span>
+              <span style="font-size:9px;font-weight:700;color:var(--text-3)">DNA</span>
+            </div>
+          </div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--text-2);margin-top:6px">درجة الحمض المالي</div>
+        </div>
+        <div style="text-align:center">
+          <div style="position:relative;width:84px;height:84px;margin:0 auto">
+            <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--success) 0 88%,var(--primary-100) 88% 100%)"></div>
+            <div style="position:absolute;inset:7px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--ink);line-height:1">88</span>
+              <span style="font-size:9px;font-weight:700;color:var(--text-3)">من 100</span>
+            </div>
+          </div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--text-2);margin-top:6px">درجة الالتزام</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI summary -->
+    <div style="background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);border-radius:24px;padding:22px 26px;box-shadow:var(--sh-sm)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:7px;height:7px;flex:none;border-radius:99px;background:var(--copper);animation:fdPulse 2s ease infinite"></div>
+        <span style="font-size:12px;font-weight:800;color:var(--copper);letter-spacing:.5px">ملخص الذكاء الاصطناعي</span>
+      </div>
+      <div data-ai-summary style="font-size:15px;color:var(--ink-2);line-height:1.9;margin-top:10px;max-width:900px;text-wrap:pretty">
+        العميلة في وضع مالي متوسط الملاءة. نسبة الدين إلى الدخل مرتفعة نسبيًا عند <span class="fd-num" style="font-weight:700">34%</span> بسبب قرض شخصي قائم وبطاقات ائتمانية، مع دفعة متأخرة واحدة خلال آخر <span class="fd-num" style="font-weight:700">24</span> شهرًا. الفائض الشهري (<span class="fd-num" style="font-weight:700">1,650</span> ريال) محدود ولا يدعم تمويلًا كبيرًا حاليًا — يُنصح بخفض رصيد البطاقات أولًا. الأنسب لها إعادة هيكلة الالتزامات ومنتجات ادخار قصيرة الأجل.
+      </div>
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <span data-badge><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="90px,22px">مؤهلة بشروط</x-import></span>
+        <span data-badge><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="90px,22px">التزامات مرتفعة</x-import></span>
+        <span data-badge><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="90px,22px">فرصة إعادة تمويل</x-import></span>
+      </div>
+    </div>
+
+    <!-- Metrics grid -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:var(--sh-sm)">
+        <div style="font-size:12px;font-weight:700;color:var(--text-2)">نسبة الدين إلى الدخل</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--copper)">34%</span>
+          <span style="font-size:11px;color:var(--text-3)">حد البنك 45%</span>
+        </div>
+        <div style="height:6px;border-radius:99px;background:var(--surface-2);margin-top:10px;overflow:hidden"><div style="height:100%;width:34%;border-radius:99px;background:var(--copper-lt);animation:fdGrow .8s ease both;transform-origin:right"></div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:var(--sh-sm)">
+        <div style="font-size:12px;font-weight:700;color:var(--text-2)">استقرار الدخل</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--ink)">91%</span>
+          <span style="font-size:11px;color:var(--text-3)">راتب ثابت 30 شهر</span>
+        </div>
+        <div style="height:6px;border-radius:99px;background:var(--surface-2);margin-top:10px;overflow:hidden"><div style="height:100%;width:91%;border-radius:99px;background:var(--primary);animation:fdGrow .8s ease both;animation-delay:.08s;transform-origin:right"></div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:var(--sh-sm)">
+        <div style="font-size:12px;font-weight:700;color:var(--text-2)">معدل الادخار</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <span class="fd-num" style="font-size:26px;font-weight:800;color:var(--ink)">8%</span>
+          <span style="font-size:11px;color:var(--text-3)">من الدخل الشهري</span>
+        </div>
+        <div style="height:6px;border-radius:99px;background:var(--surface-2);margin-top:10px;overflow:hidden"><div style="height:100%;width:8%;border-radius:99px;background:var(--primary);animation:fdGrow .8s ease both;animation-delay:.16s;transform-origin:right"></div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;box-shadow:var(--sh-sm)">
+        <div style="font-size:12px;font-weight:700;color:var(--text-2)">مستوى المخاطرة</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+          <span style="font-size:22px;font-weight:800;color:var(--copper)">متوسط</span>
+          <span class="fd-num" style="font-size:11px;color:var(--text-3)">58/100</span>
+        </div>
+        <div style="height:6px;border-radius:99px;background:var(--surface-2);margin-top:10px;overflow:hidden"><div style="height:100%;width:58%;border-radius:99px;background:var(--copper-lt);animation:fdGrow .8s ease both;animation-delay:.24s;transform-origin:right"></div></div>
+      </div>
+    </div>
+
+    <!-- Two-column: financial position + goals -->
+    <div style="display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:stretch">
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+          <div style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:16px">الوضع المالي الشهري</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.FlowStat" label="إجمالي الدخل" value="12,400" tone="in" hint-size="100%,48px"></x-import>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.FlowStat" label="الالتزامات" value="4,220" tone="out" hint-size="100%,48px"></x-import>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.FlowStat" label="الفائض الشهري" value="1,650" tone="neutral" hint-size="100%,48px"></x-import>
+          </div>
+          <div style="border-top:1px solid var(--line-soft);margin-top:18px;padding-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;font-size:13px">
+              <span style="color:var(--text-2);font-weight:600">قرض شخصي قائم</span>
+              <span style="font-weight:700;color:var(--ink)"><span class="fd-num">2,400</span> / شهر · متبقٍ <span class="fd-num">57,600</span></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px">
+              <span style="color:var(--text-2);font-weight:600">بطاقات ائتمانية</span>
+              <span style="font-weight:700;color:var(--ink)"><span class="fd-num">1,150</span> / شهر</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px">
+              <span style="color:var(--text-2);font-weight:600">فواتير شهرية</span>
+              <span style="font-weight:700;color:var(--ink)"><span class="fd-num">670</span> / شهر</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+            <span style="font-size:15px;font-weight:800;color:var(--ink)">الأهلية التمويلية</span>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="60px,22px">محدّثة الآن</x-import>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div data-eligibility="car_loan" style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+              <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل مركبة</span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span data-note style="font-size:13px;font-weight:700;color:var(--text-2)">حتى <span class="fd-num">95,000</span></span>
+                <span data-status><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="ok" hint-size="50px,22px">مؤهل</x-import></span>
+              </div>
+            </div>
+            <div data-eligibility="personal_loan" style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+              <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل شخصي</span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span data-note style="font-size:13px;font-weight:700;color:var(--text-2)">بعد سداد البطاقات</span>
+                <span data-status><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="warn" hint-size="50px,22px">مشروط</x-import></span>
+              </div>
+            </div>
+            <div data-eligibility="mortgage" style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+              <span style="font-size:13.5px;font-weight:700;color:var(--ink)">تمويل عقاري</span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span data-note style="font-size:13px;font-weight:700;color:var(--text-2)">يتطلب خفض الالتزامات</span>
+                <span data-status><x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="danger" hint-size="50px,22px">غير مؤهل</x-import></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+          <div style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:14px">الأهداف الحالية</div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+                <span style="font-weight:700;color:var(--ink)">سيارة هيونداي</span>
+                <span class="fd-num" style="font-weight:800;color:var(--primary)">35%</span>
+              </div>
+              <div style="height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden"><div style="height:100%;width:35%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-600));animation:fdGrow .8s ease both;transform-origin:right"></div></div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:5px">الإنجاز المتوقع: فبراير 2027</div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+                <span style="font-weight:700;color:var(--ink)">مقدم شقة</span>
+                <span class="fd-num" style="font-weight:800;color:var(--primary)">9%</span>
+              </div>
+              <div style="height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden"><div style="height:100%;width:9%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-600));animation:fdGrow .8s ease both;animation-delay:.08s;transform-origin:right"></div></div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:5px">الإنجاز المتوقع: أواخر 2032</div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+                <span style="font-weight:700;color:var(--ink)">دراسة ماجستير</span>
+                <span class="fd-num" style="font-weight:800;color:var(--primary)">52%</span>
+              </div>
+              <div style="height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden"><div style="height:100%;width:52%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-600));animation:fdGrow .8s ease both;animation-delay:.16s;transform-origin:right"></div></div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:5px">الإنجاز المتوقع: سبتمبر 2027</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm);flex:1;display:flex;flex-direction:column">
+          <div style="font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px">إمكانات الاستثمار</div>
+          <div style="font-size:12.5px;color:var(--text-2);line-height:1.7;margin-bottom:14px">الفائض الحالي محدود — الأولوية لسداد البطاقات ثم ادخار قصير الأجل</div>
+          <div style="margin-top:auto;background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12.5px;font-weight:700;color:var(--text-2)">قابل للاستثمار شهريًا</span>
+            <span class="fd-num" style="font-size:20px;font-weight:800;color:var(--primary)">600 SAR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <span style="font-size:15px;font-weight:800;color:var(--ink)">قرار أهلية القرض (تمويل شخصي — إعادة تمويل)</span>
+      <span data-uc3-decision style="font-size:12px;font-weight:800;color:var(--copper);background:var(--surface-2);border-radius:99px;padding:5px 12px;white-space:nowrap">جارٍ التقييم...</span>
+    </div>
+    <div data-uc3-figures style="display:none;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px">
+      <div style="border:1px solid var(--line);border-radius:16px;padding:12px 16px">
+        <div style="font-size:11px;font-weight:700;color:var(--text-3)">الحد الأقصى للتمويل</div>
+        <div style="display:flex;align-items:baseline;gap:5px;margin-top:4px">
+          <span data-uc3-max class="fd-num" style="font-size:19px;font-weight:800;color:var(--ink)"></span>
+          <span style="font-size:11px;color:var(--text-3)">ريال</span>
+        </div>
+      </div>
+      <div style="border:1px solid var(--line);border-radius:16px;padding:12px 16px">
+        <div style="font-size:11px;font-weight:700;color:var(--text-3)">القسط الشهري التقديري</div>
+        <div style="display:flex;align-items:baseline;gap:5px;margin-top:4px">
+          <span data-uc3-monthly class="fd-num" style="font-size:19px;font-weight:800;color:var(--ink)"></span>
+          <span style="font-size:11px;color:var(--text-3)">ريال / شهر</span>
+        </div>
+      </div>
+      <div data-uc3-prob-box style="border:1px solid var(--line);border-radius:16px;padding:12px 16px">
+        <div style="font-size:11px;font-weight:700;color:var(--text-3)">احتمالية الموافقة</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+          <span data-uc3-prob class="fd-num" style="font-size:19px;font-weight:800;color:var(--ink)"></span>
+          <span style="flex:1;height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden;display:block"><span data-uc3-prob-bar style="display:block;height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-600));transition:width .8s ease"></span></span>
+        </div>
+      </div>
+      <div data-uc3-dti-box style="border:1px solid var(--line);border-radius:16px;padding:12px 16px">
+        <div style="font-size:11px;font-weight:700;color:var(--text-3)">نسبة الدين بعد التمويل</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+          <span data-uc3-dti class="fd-num" style="font-size:19px;font-weight:800;color:var(--ink)"></span>
+          <span data-uc3-dti-track style="flex:1;position:relative;height:6px;border-radius:99px;background:var(--surface-2);overflow:visible;display:block">
+            <span data-uc3-dti-bar style="display:block;height:100%;width:0%;border-radius:99px;background:var(--success);transition:width .8s ease"></span>
+            <span data-uc3-dti-limit style="display:none;position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--danger);border-radius:2px"></span>
+          </span>
+        </div>
+        <div data-uc3-dti-sub style="font-size:10.5px;color:var(--text-3);margin-top:6px"></div>
+      </div>
+    </div>
+    <div data-uc3-reason-wrap style="display:none;background:var(--surface-2);border-radius:14px;padding:12px 16px;margin-bottom:12px">
+      <div style="font-size:11.5px;font-weight:800;color:var(--text-2);margin-bottom:4px">سبب القرار</div>
+      <div data-uc3-reason style="font-size:13px;color:var(--ink-2);line-height:1.8;text-wrap:pretty"></div>
+    </div>
+    <div data-uc3-details style="display:none;grid-template-columns:1fr 1fr;gap:12px">
+      <div data-uc3-conditions-wrap style="display:none;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+        <div style="font-size:11.5px;font-weight:800;color:var(--text-2);margin-bottom:8px">عوامل مؤثرة على القرار</div>
+        <div data-uc3-conditions style="display:flex;flex-direction:column;gap:6px"></div>
+      </div>
+      <div data-uc3-improve-wrap style="display:none;border:1px solid var(--line-soft);border-radius:16px;padding:12px 16px">
+        <div style="font-size:11.5px;font-weight:800;color:var(--text-2);margin-bottom:8px">لرفع فرصة الموافقة</div>
+        <div data-uc3-improve style="display:flex;flex-direction:column;gap:6px"></div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Recommended products -->
+    <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 24px;box-shadow:var(--sh-sm)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <span style="font-size:15px;font-weight:800;color:var(--ink)">منتجات موصى بها لهذا العميل</span>
+        <span style="font-size:12px;color:var(--text-3)">مرتبة حسب ملاءمة الحمض المالي</span>
+      </div>
+      <div data-recommendations style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+        <div data-rec-card style="border:1.5px solid var(--copper);background:linear-gradient(170deg,rgba(217,184,106,.08),#fff);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span data-rec-title style="font-size:14px;font-weight:800;color:var(--ink)">تمويل مركبة</span>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="new" hint-size="50px,22px">الأنسب</x-import>
+          </div>
+          <div data-rec-reason style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">يغطي هدف الكامري فورًا — قسط 2,150 ريال ضمن قدرته</div>
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="copper" size="sm" hint-size="100%,36px">تقديم عرض</x-import>
+        </div>
+        <div data-rec-card style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span data-rec-title style="font-size:14px;font-weight:800;color:var(--ink)">محفظة استثمارية متحفظة</span>
+          <div data-rec-reason style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">1,500 ريال شهريًا — تقرّب هدف الشقة نحو 14 شهرًا</div>
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">عرض التفاصيل</x-import>
+        </div>
+        <div data-rec-card style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span data-rec-title style="font-size:14px;font-weight:800;color:var(--ink)">حساب ادخار بعائد</span>
+          <div data-rec-reason style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">يناسب نمطه الادخاري المنتظم — تحويل تلقائي شهري</div>
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">عرض التفاصيل</x-import>
+        </div>
+        <div data-rec-card style="border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+          <span data-rec-title style="font-size:14px;font-weight:800;color:var(--ink)">سداد مبكر لقرض السيارة</span>
+          <div data-rec-reason style="font-size:12px;color:var(--text-2);line-height:1.7;flex:1">800 ريال إضافية شهريًا تنهي القرض قبل 11 شهرًا وتوفر 14,000 ريال</div>
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" hint-size="100%,36px">محاكاة السداد</x-import>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+
+<style>
+@keyframes fdShimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.fd-loading {
+  background: linear-gradient(90deg, #f0eef8 25%, #e0ddf0 50%, #f0eef8 75%);
+  background-size: 400px 100%;
+  animation: fdShimmer 1.4s infinite;
+  border-radius: 8px;
+  color: transparent !important;
+  min-height: 1em;
+}
+.fd-badge-ok    { background: #e6f8f2 !important; color: #1a7a55 !important; }
+.fd-badge-warn  { background: #fdf3e3 !important; color: #a05c00 !important; }
+.fd-badge-danger{ background: #fde8e7 !important; color: #8b2020 !important; }
+.fd-status-ok   { color: #3DBF8F !important; }
+.fd-status-warn { color: #E0A45E !important; }
+.fd-status-danger{ color: #E0564E !important; }
+</style>
+
+<script>
+(function () {
+  const CUSTOMER_DATA = {
+    customer: {
+      id: "100731544",
+      name: "سارة القحطاني",
+      salary: 12400,
+      additional_income: 0,
+      balance: 8200,
+      obligations: { car_loan: 0, credit_cards: 1150, monthly_bills: 670, personal_loan: 2400, mortgage: 0 },
+      total_obligations: 4220,
+      monthly_surplus: 1650,
+      dna_score: 74,
+      commitment_score: 88,
+      risk_level: "medium",
+      savings_rate: 0.08,
+      income_stability: 0.91,
+      dti_ratio: 0.34,
+      spending_behavior: { restaurant_spending: 2100, weekend_spending_pct: 0.45, late_payments_24m: 1, impulse_score: 48 },
+      loan_history: { personal_loan_remaining: 57600, personal_loan_monthly: 2400, on_time_payments_streak: 9 },
+      goals: [
+        { type: "car",       name: "سيارة هيونداي", target: 85000, saved: 29750, deadline: "2027-02", progress: 0.35 },
+        { type: "apartment", name: "مقدم شقة", target: 150000, saved: 13500, deadline: "2032-10", progress: 0.09 },
+        { type: "study",     name: "دراسة ماجستير", target: 45000, saved: 23400, deadline: "2027-09", progress: 0.52 }
+      ]
+    }
+  };
+
+  function safeParseJSON(raw) {
+    let text = (raw || '').trim();
+    text = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '');
+    const start = text.indexOf('{');
+    const end   = text.lastIndexOf('}');
+    if (start === -1 || end === -1) throw new Error('No JSON found');
+    return JSON.parse(text.slice(start, end + 1));
+  }
+
+  async function callAgent(mode, data) {
+    const _controller = new AbortController();
+    const _timeout = setTimeout(() => _controller.abort(), 180000);
+    let res;
+    try {
+      res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: _controller.signal,
+        body: JSON.stringify({
+          model: 'findna-agent',
+          messages: [{ role: 'user', content: `[${mode}]\n` + JSON.stringify(data) }],
+          stream: false
+        })
+      });
+    } finally {
+      clearTimeout(_timeout);
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    // The endpoint always responds as text/event-stream (SSE), even with stream:false,
+    // so we read the raw body and stitch the delta.content chunks back together.
+    const raw = await res.text();
+    let text = '';
+    for (const line of raw.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed.startsWith('data:')) continue;
+      const payload = trimmed.slice(5).trim();
+      if (payload === '[DONE]') continue;
+      let evt;
+      try { evt = JSON.parse(payload); } catch { continue; }
+      const content = evt?.choices?.[0]?.delta?.content ?? evt?.choices?.[0]?.message?.content;
+      if (typeof content === 'string') text += content;
+    }
+    return safeParseJSON(text);
+  }
+
+  async function loadDashboard() {
+    console.log('[FinDNA] 🧬 Calling agent...');
+
+    const summaryEl = document.querySelector('[data-ai-summary]');
+    if (summaryEl) {
+      summaryEl.dataset.orig = summaryEl.textContent;
+      summaryEl.classList.add('fd-loading');
+    }
+
+    try {
+      const r = await callAgent('UC4', CUSTOMER_DATA);
+      console.log('[FinDNA] ✅', r);
+
+      // Summary
+      if (summaryEl) {
+        summaryEl.classList.remove('fd-loading');
+        summaryEl.textContent = r.summary;
+      }
+
+      // Badges
+      const badgeEls = document.querySelectorAll('[data-badge]');
+      (r.badges || []).forEach((b, i) => {
+        if (badgeEls[i]) {
+          badgeEls[i].textContent = b.text;
+          badgeEls[i].className = badgeEls[i].className.replace(/fd-badge-\w+/g, '');
+          badgeEls[i].classList.add('fd-badge-' + b.tone);
+        }
+      });
+
+      // Eligibility cards
+      ['car_loan', 'personal_loan', 'mortgage'].forEach(key => {
+        const card = document.querySelector(`[data-eligibility="${key}"]`);
+        const data = r.eligibility?.[key];
+        if (!card || !data) return;
+
+        const statusEl = card.querySelector('[data-status]');
+        const noteEl   = card.querySelector('[data-note]');
+        if (statusEl) {
+          statusEl.textContent = data.status;
+          statusEl.className = statusEl.className.replace(/fd-status-\w+/g, '');
+          statusEl.classList.add('fd-status-' + data.tone);
+        }
+        if (noteEl) noteEl.textContent = data.note;
+      });
+
+      // Recommendations
+      const recWrapper = document.querySelector('[data-recommendations]');
+      if (recWrapper && r.recommendations?.length) {
+        const cards = recWrapper.querySelectorAll('[data-rec-card]');
+        r.recommendations.forEach((rec, i) => {
+          if (cards[i]) {
+            const t = cards[i].querySelector('[data-rec-title]');
+            const d = cards[i].querySelector('[data-rec-reason]');
+            if (t) t.textContent = rec.title;
+            if (d) d.textContent = rec.reason;
+          }
+        });
+      }
+
+      console.log('[FinDNA] 🎯 Done');
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        console.warn('[FinDNA] agent request timed out after 3 minutes');
+      } else {
+        console.error('[FinDNA] ❌', err);
+      }
+      if (summaryEl) {
+        summaryEl.classList.remove('fd-loading');
+        summaryEl.textContent = err.name === 'AbortError'
+          ? 'تعذّر تحميل التحليل — انتهت مهلة الاتصال. حاول تحديث الصفحة.'
+          : (summaryEl.dataset.orig || 'تعذّر تحميل التحليل.');
+      }
+    }
+  }
+
+  async function loadUC3() {
+    const decisionEl = document.querySelector('[data-uc3-decision]');
+    const CUSTOMER_DATA_UC3 = {
+      customer: {
+        name: "سارة القحطاني",
+        salary: 12400,
+        dna_score: 74,
+        dti_ratio: 0.34,
+        income_stability: 0.91,
+        savings_rate: 0.08,
+        requested_loan: { type: "شخصي — إعادة تمويل", amount: 90000, term_months: 60 },
+        obligations: { personal_loan: 2400, credit_cards: 1150, monthly_bills: 670 }
+      }
+    };
+    try {
+      const r = await callAgent('UC3', CUSTOMER_DATA_UC3);
+      console.log('[FinDNA] UC3 ✅', r);
+
+      if (decisionEl) {
+        const prob = Number(r.current_approval_probability ?? 0);
+        const status = String(r.approval_status ?? '');
+        decisionEl.textContent = '';
+        decisionEl.appendChild(document.createTextNode(status + ' '));
+        const p = document.createElement('span');
+        p.className = 'fd-num';
+        p.textContent = prob + '%';
+        decisionEl.appendChild(p);
+        const tone = /غير|مرفوض/.test(status) || prob < 40 ? 'danger'
+                   : /مشروط|جزئي/.test(status) || prob < 75 ? 'warn' : 'ok';
+        decisionEl.className = decisionEl.className.replace(/fd-badge-\w+/g, '').trim();
+        decisionEl.classList.add('fd-badge-' + tone);
+        decisionEl.style.color = '';
+      }
+      // Bidi-safe mixed text: numeric tokens get their own LTR .fd-num span.
+      const setMixed = (el, text) => {
+        if (!el) return;
+        el.textContent = '';
+        String(text ?? '').split(/(\d[\d.,]*%?)/).forEach(part => {
+          if (!part) return;
+          if (/^\d/.test(part)) {
+            const s = document.createElement('span');
+            s.className = 'fd-num';
+            s.style.fontWeight = '700';
+            s.textContent = part;
+            el.appendChild(s);
+          } else {
+            el.appendChild(document.createTextNode(part));
+          }
+        });
+      };
+      const figuresEl = document.querySelector('[data-uc3-figures]');
+      figuresEl.style.display = 'grid';
+      const max = r.best_product?.max_amount;
+      const monthly = r.best_product?.estimated_monthly;
+      document.querySelector('[data-uc3-max]').textContent = max != null ? Number(max).toLocaleString('en-US') : '—';
+      document.querySelector('[data-uc3-monthly]').textContent = monthly != null ? Number(monthly).toLocaleString('en-US') : '—';
+      // Probability box
+      const probPct = Math.max(0, Math.min(100, Number(r.current_approval_probability ?? 0)));
+      document.querySelector('[data-uc3-prob]').textContent = probPct + '%';
+      const probBar = document.querySelector('[data-uc3-prob-bar]');
+      probBar.style.width = probPct + '%';
+      if (probPct < 40) probBar.style.background = 'var(--danger)';
+      else if (probPct < 75) probBar.style.background = 'var(--warning, #D9A13B)';
+      // DTI box
+      const dtiBox = document.querySelector('[data-uc3-dti-box]');
+      if (r.dti_analysis) {
+        const d = r.dti_analysis;
+        const dti = Number(d.dti_after_loan), limit = Number(d.bank_limit);
+        const over = dti > limit;
+        const dtiEl = document.querySelector('[data-uc3-dti]');
+        dtiEl.textContent = dti + '%';
+        dtiEl.style.color = over ? 'var(--danger)' : 'var(--success)';
+        const scale = Math.max(dti, limit) * 1.25 || 100;
+        const bar = document.querySelector('[data-uc3-dti-bar]');
+        bar.style.width = Math.min(100, dti / scale * 100) + '%';
+        bar.style.background = over ? 'var(--danger)' : 'var(--success)';
+        const lim = document.querySelector('[data-uc3-dti-limit]');
+        lim.style.display = 'block';
+        lim.style.insetInlineStart = Math.min(100, limit / scale * 100) + '%';
+        setMixed(document.querySelector('[data-uc3-dti-sub]'), `حد البنك ${limit}% · الهامش المتبقي ${d.headroom}%`);
+      } else {
+        dtiBox.style.display = 'none';
+      }
+      // Reason
+      const reason = r.best_product?.reason ?? r.reason ?? '';
+      if (reason) {
+        document.querySelector('[data-uc3-reason-wrap]').style.display = 'block';
+        setMixed(document.querySelector('[data-uc3-reason]'), reason);
+      }
+      // Detail columns: blocking factors + improvement suggestions
+      const fillList = (wrapSel, listSel, items, color) => {
+        const wrap = document.querySelector(wrapSel), list = document.querySelector(listSel);
+        if (!items.length) return false;
+        wrap.style.display = 'block';
+        list.textContent = '';
+        items.forEach(f => {
+          const row = document.createElement('div');
+          row.style.cssText = 'display:flex;gap:8px;font-size:12.5px;color:var(--text-2);line-height:1.7';
+          const dot = document.createElement('span');
+          dot.style.cssText = 'color:' + color + ';flex:none';
+          dot.textContent = '•';
+          const txt = document.createElement('span');
+          setMixed(txt, f);
+          row.appendChild(dot); row.appendChild(txt);
+          list.appendChild(row);
+        });
+        return true;
+      };
+      const factors = Array.isArray(r.blocking_factors) ? r.blocking_factors.filter(Boolean) : [];
+      const improvements = [r.improvement_suggestions, r.recommendations_to_improve, r.suggestions, r.next_steps]
+        .flatMap(x => Array.isArray(x) ? x : []).filter(Boolean);
+      const hasA = fillList('[data-uc3-conditions-wrap]', '[data-uc3-conditions]', factors, 'var(--copper)');
+      const hasB = fillList('[data-uc3-improve-wrap]', '[data-uc3-improve]', improvements, 'var(--primary)');
+      const details = document.querySelector('[data-uc3-details]');
+      if (hasA || hasB) {
+        details.style.display = 'grid';
+        if (!(hasA && hasB)) details.style.gridTemplateColumns = '1fr';
+      }
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        console.warn('[FinDNA] UC3 request timed out after 3 minutes');
+      } else {
+        console.error('[FinDNA] UC3 ❌', err);
+      }
+      if (decisionEl) {
+        decisionEl.textContent = 'تعذّر التقييم — انتهت مهلة الاتصال أو حدث خطأ.';
+        decisionEl.style.whiteSpace = 'normal';
+        decisionEl.classList.add('fd-badge-danger');
+        decisionEl.style.color = '';
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(() => { loadDashboard(); loadUC3(); }, 500));
+  } else {
+    setTimeout(() => { loadDashboard(); loadUC3(); }, 500);
+  }
+})();
+</script>
+
+</body>
+</html>

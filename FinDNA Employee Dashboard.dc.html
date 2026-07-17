@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/styles.css">
+  <script src="_ds/findna-design-system-beecc405-c734-4c81-ab98-959630ecfa3a/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:var(--bg);font-family:'Tajawal',sans-serif}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{color:var(--primary-600)}
+    @keyframes fdGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @keyframes fdFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fdPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.8)}}
+    @keyframes fdSlideIn{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes fdShimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+    .fd-loading{background:linear-gradient(90deg,#f0eef8 25%,#e0ddf0 50%,#f0eef8 75%);background-size:400px 100%;animation:fdShimmer 1.4s infinite;border-radius:8px;display:block}
+    input[type=range]{accent-color:var(--primary)}
+  </style>
+</helmet>
+<div dir="rtl" style="min-height:100vh;background:var(--bg);font-family:'Tajawal',sans-serif;color:var(--text)" data-screen-label="Employee Loan Dashboard">
+
+  <!-- Top bar -->
+  <div style="background:var(--surface);border-bottom:1px solid var(--line);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:1.5px;color:var(--copper)">FinDNA</div>
+      <div style="width:1px;height:20px;background:var(--line)"></div>
+      <div style="font-size:14px;font-weight:700;color:var(--ink)">لوحة الموظف — التوصيات الذكية للتمويل</div>
+      <div style="display:flex;align-items:center;gap:6px;background:var(--primary-50);border:1px solid var(--primary-100);border-radius:99px;padding:4px 11px">
+        <div style="width:6px;height:6px;border-radius:99px;background:var(--copper);animation:fdPulse 2s ease infinite"></div>
+        <span style="font-size:11px;font-weight:800;color:var(--primary)">ترشيحات آلية بالذكاء الاصطناعي</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="font-size:12.5px;color:var(--text-2)">فرع الرياض الرئيسي · نورة العتيبي</div>
+      <div style="width:36px;height:36px;border-radius:12px;background:var(--primary-50);border:1px solid var(--primary-100);display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--primary)">ن</div>
+    </div>
+  </div>
+
+  <div style="max-width:1460px;margin:0 auto;padding:24px 32px 56px;display:grid;grid-template-columns:248px 1fr;gap:20px;align-items:start;animation:fdFadeUp .35s ease both">
+
+    <!-- Sidebar -->
+    <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 16px 14px; box-shadow: var(--sh-sm); position: sticky; top: 82px; display: flex; flex-direction: column; gap: 6px; width: 250px; height: 380px">
+      <div style="font-size:11.5px;font-weight:800;color:var(--text-3);letter-spacing:.4px;padding:4px 10px 10px">منتجات التمويل</div>
+      <div onClick="{{ selP }}" style="display:flex;align-items:center;gap:11px;padding:12px 12px;border-radius:16px;cursor:pointer;transition:background .2s,border-color .2s;border:1px solid {{ pBorder }};background:{{ pBg }}" style-hover="background:var(--primary-50)">
+        <div style="width:38px;height:38px;flex:none;border-radius:12px;display:grid;place-items:center;background:{{ pIconBg }};color:{{ pIconColor }};border:1px solid var(--line-soft)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V10"></path><path d="M9.5 21V10"></path><path d="M14.5 21V10"></path><path d="M19 21V10"></path><path d="M3 10l9-6 9 6"></path></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13.5px;font-weight:800;color:{{ pColor }}">تمويل شخصي</div>
+          <div style="font-size:10.5px;color:var(--text-3);margin-top:1px">سيارة · زواج · سفر · تعليم</div>
+        </div>
+        <span class="fd-num" style="font-size:11.5px;font-weight:800;background:{{ pCountBg }};color:{{ pCountColor }};border-radius:99px;padding:3px 9px">{{ countP }}</span>
+      </div>
+      <div onClick="{{ selH }}" style="display:flex;align-items:center;gap:11px;padding:12px 12px;border-radius:16px;cursor:pointer;transition:background .2s,border-color .2s;border:1px solid {{ hBorder }};background:{{ hBg }}" style-hover="background:var(--primary-50)">
+        <div style="width:38px;height:38px;flex:none;border-radius:12px;display:grid;place-items:center;background:{{ hIconBg }};color:{{ hIconColor }};border:1px solid var(--line-soft)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13.5px;font-weight:800;color:{{ hColor }}">تمويل عقاري</div>
+          <div style="font-size:10.5px;color:var(--text-3);margin-top:1px">شراء · بناء · أرض</div>
+        </div>
+        <span class="fd-num" style="font-size:11.5px;font-weight:800;background:{{ hCountBg }};color:{{ hCountColor }};border-radius:99px;padding:3px 9px">{{ countH }}</span>
+      </div>
+      <div onClick="{{ selC }}" style="display:flex;align-items:center;gap:11px;padding:12px 12px;border-radius:16px;cursor:pointer;transition:background .2s,border-color .2s;border:1px solid {{ cBorder }};background:{{ cBg }}" style-hover="background:var(--primary-50)">
+        <div style="width:38px;height:38px;flex:none;border-radius:12px;display:grid;place-items:center;background:{{ cIconBg }};color:{{ cIconColor }};border:1px solid var(--line-soft)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1.2 14H4.8L6 7z"></path><path d="M9 10V6a3 3 0 0 1 6 0v4"></path></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13.5px;font-weight:800;color:{{ cColor }}">تمويل استهلاكي</div>
+          <div style="font-size:10.5px;color:var(--text-3);margin-top:1px">تجّار شركاء · تقسيط</div>
+        </div>
+        <span class="fd-num" style="font-size:11.5px;font-weight:800;background:{{ cCountBg }};color:{{ cCountColor }};border-radius:99px;padding:3px 9px">{{ countC }}</span>
+      </div>
+      <div style="border-top:1px solid var(--line-soft);margin-top:8px;padding:12px 10px 4px;font-size:11px;color:var(--text-3);line-height:1.7">يُطابق الذكاء الاصطناعي أهداف العملاء مع منتج التمويل الأنسب تلقائيًا — لا حاجة لتصفية يدوية.</div>
+    </div>
+
+    <!-- Main column -->
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+
+      <!-- KPI cards -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px 20px;box-shadow:var(--sh-sm)">
+          <div style="font-size:12px;font-weight:700;color:var(--text-2)">عملاء مؤهلون — {{ productLabel }}</div>
+          <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+            <span class="fd-num" style="font-size:27px;font-weight:800;color:var(--ink)">{{ kpiEligible }}</span>
+            <span style="font-size:11px;color:var(--text-3)">من {{ kpiTotal }} عميلًا</span>
+          </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px 20px;box-shadow:var(--sh-sm)">
+          <div style="font-size:12px;font-weight:700;color:var(--text-2)">متوسط الحمض المالي</div>
+          <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px">
+            <span class="fd-num" style="font-size:27px;font-weight:800;color:var(--primary)">{{ kpiAvgDna }}</span>
+            <span style="font-size:11px;color:var(--text-3)">من 100</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smart Campaigns -->
+      <div style="background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);border-radius:24px;box-shadow:var(--sh-sm);overflow:hidden">
+        <div onClick="{{ toggleCampaign }}" style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;cursor:pointer">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:7px;height:7px;flex:none;border-radius:99px;background:var(--copper);animation:fdPulse 2s ease infinite"></div>
+            <span style="font-size:15px;font-weight:800;color:var(--ink)">الحملات الذكية</span>
+            <span style="font-size:12px;color:var(--text-2)">أرسل عروض تمويل لعدة عملاء دفعة واحدة — استهداف بالحمض المالي وحاجة العميل</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span class="fd-num" style="font-size:12px;font-weight:800;color:var(--copper)">{{ campSentToday }} حملات اليوم</span>
+            <span style="font-size:13px;color:var(--text-3);transform:{{ chevRot }};transition:transform .2s;display:inline-block">▾</span>
+          </div>
+        </div>
+        <sc-if value="{{ campaignOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:0 24px 22px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:18px;align-items:stretch">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px;flex:1;display:flex;flex-direction:column;min-height:200px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                  <span style="font-size:12.5px;font-weight:800;color:var(--ink)">أهلية الحمض المالي</span>
+                  <span class="fd-num" style="font-size:13px;font-weight:800;color:var(--primary)">DNA ≥ {{ campMin }}</span>
+                </div>
+                <input type="range" min="50" max="95" step="5" value="{{ campMin }}" onChange="{{ setCampMin }}" style="width:100%;direction:ltr">
+                <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+                  <sc-for list="{{ tierChips }}" as="t" hint-placeholder-count="4">
+                    <div onClick="{{ t.select }}" style="font-size:12px;font-weight:700;border-radius:99px;padding:6px 14px;cursor:pointer;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};transition:all .2s" style-hover="border-color:var(--primary)">{{ t.label }}</div>
+                  </sc-for>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;background:var(--surface-2);border-radius:14px;padding:11px 14px">
+                  <span style="font-size:12px;font-weight:700;color:var(--text-2)">عملاء فوق هذا الحد في {{ productLabel }}</span>
+                  <span class="fd-num" style="font-size:15px;font-weight:800;color:var(--primary)">{{ campTierCount }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;min-height:200px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                <span style="font-size:13px;font-weight:800;color:var(--ink)">معاينة الحملة</span>
+                <span style="font-size:11px;font-weight:800;color:var(--copper);background:rgba(217,184,106,.14);border-radius:99px;padding:4px 10px">{{ productLabel }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px;font-size:12.5px;flex:1">
+                <div style="display:flex;justify-content:space-between"><span style="color:var(--text-2);font-weight:600">عملاء مطابقون</span><span class="fd-num" style="font-weight:800;color:var(--ink)">{{ campCount }}</span></div>
+                <div style="display:flex;justify-content:space-between"><span style="color:var(--text-2);font-weight:600">متوسط الحمض المالي</span><span class="fd-num" style="font-weight:800;color:var(--primary)">{{ campAvgDna }}</span></div>
+                <div style="display:flex;justify-content:space-between"><span style="color:var(--text-2);font-weight:600">معدل الموافقة المتوقع</span><span class="fd-num" style="font-weight:800;color:var(--success)">{{ campApproval }}%</span></div>
+              </div>
+              <sc-if value="{{ campIdle }}" hint-placeholder-val="{{ true }}">
+                <div onClick="{{ sendCampaign }}" style="margin-top:14px;background:var(--copper);color:#fff;border-radius:99px;padding:12px 18px;font-size:13.5px;font-weight:800;text-align:center;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:filter .2s" style-hover="filter:brightness(1.06)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"></path><path d="M22 2 15 22l-4-9-9-4 20-7z"></path></svg>
+                  إرسال عروض التمويل
+                </div>
+              </sc-if>
+              <sc-if value="{{ campSending }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:14px;background:var(--surface-2);color:var(--text-2);border-radius:99px;padding:12px 18px;font-size:13.5px;font-weight:800;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px">
+                  <div style="width:7px;height:7px;border-radius:99px;background:var(--copper);animation:fdPulse 2s ease infinite"></div>
+                  <span class="fd-num">جارٍ الإرسال... {{ campAttempted }} من {{ campTotalSent }}</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ campDone }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:14px;border:1px dashed var(--primary);background:var(--primary-50);border-radius:16px;padding:12px 14px">
+                  <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px">
+                    <div style="width:6px;height:6px;border-radius:99px;background:var(--success)"></div>
+                    <span class="fd-num" style="font-size:12px;font-weight:800;color:var(--primary)">تم إرسال {{ campSentCount }} عروض ✓</span>
+                  </div>
+                  <sc-if value="{{ campFailedCount }}" hint-placeholder-val="{{ false }}">
+                    <div class="fd-num" style="font-size:11px;color:var(--danger)">تعذّر إرسال {{ campFailedCount }}</div>
+                  </sc-if>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- Toolbar -->
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--surface)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input value="{{ query }}" onChange="{{ onQuery }}" placeholder="ابحث باسم العميل أو رقمه…" style="flex:1;border:0;outline:0;background:transparent;font-family:'Tajawal',sans-serif;font-size:13.5px;color:var(--ink)">
+        </div>
+        <div style="display:flex;gap:7px">
+          <sc-for list="{{ eligChips }}" as="e" hint-placeholder-count="5">
+            <div onClick="{{ e.select }}" style="font-size:12px;font-weight:700;border-radius:99px;padding:8px 14px;cursor:pointer;border:1px solid {{ e.border }};background:{{ e.bg }};color:{{ e.color }};transition:all .2s" style-hover="border-color:var(--primary)">{{ e.label }}</div>
+          </sc-for>
+        </div>
+        <select value="{{ sort }}" onChange="{{ onSort }}" style="border:1.5px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--surface);font-family:'Tajawal',sans-serif;font-size:12.5px;font-weight:700;color:var(--ink);outline:0;cursor:pointer">
+          <option value="elig">ترتيب: الأهلية الأعلى</option>
+          <option value="dna">ترتيب: أعلى DNA</option>
+          <option value="income">ترتيب: الدخل</option>
+          <option value="conf">ترتيب: احتمالية الموافقة</option>
+        </select>
+      </div>
+
+      <!-- Customer table -->
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh-sm);overflow:hidden">
+        <div style="display:grid;grid-template-columns:1.3fr 1fr .8fr 1.1fr 1.1fr .6fr .8fr;gap:14px;padding:13px 22px;border-bottom:1px solid var(--line);background:var(--surface-2);font-size:11px;font-weight:800;color:var(--text-3)">
+          <span style="white-space:nowrap">العميل</span><span style="white-space:nowrap">الحمض المالي</span><span style="white-space:nowrap">الأهلية</span><span style="white-space:nowrap">هدف العميل</span><span style="white-space:nowrap">التمويل الموصى به</span><span style="white-space:nowrap">الثقة</span><span style="white-space:nowrap">الحالة</span>
+        </div>
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+          <div onClick="{{ r.select }}" style="display:grid;grid-template-columns:1.3fr 1fr .8fr 1.1fr 1.1fr .6fr .8fr;gap:14px;padding:13px 22px;border-bottom:1px solid var(--line-soft);align-items:center;cursor:pointer;transition:background .15s;background:{{ r.rowBg }}" style-hover="background:var(--primary-50)">
+            <div style="display:flex;align-items:center;gap:11px;min-width:0">
+              
+              <div style="min-width:0">
+                <div style="font-size:13.5px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</div>
+                <div class="fd-num" style="font-size:10.5px;color:var(--text-3)">{{ r.id }}</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="fd-num" style="font-size:14px;font-weight:800;color:{{ r.dnaColor }}">{{ r.dna }}</span>
+              <span style="flex:1;max-width:52px;height:5px;border-radius:99px;background:var(--surface-2);overflow:hidden;display:block"><span style="display:block;height:100%;width:{{ r.dna }}%;border-radius:99px;background:{{ r.dnaColor }}"></span></span>
+            </div>
+            <span><span style="font-size:11px;font-weight:800;border-radius:99px;padding:4px 10px;background:{{ r.eligBg }};color:{{ r.eligColor }};white-space:nowrap">{{ r.elig }}</span></span>
+            <span style="font-size:12.5px;font-weight:700;color:var(--ink-2)">{{ r.goal }}</span>
+            <span style="font-size:12.5px;font-weight:700;color:var(--primary)">{{ r.rec }}</span>
+            <span class="fd-num" style="font-size: 12.5px; font-weight: 800; color: var(--ink); text-align: right">{{ r.conf }}%</span>
+            <span style="font-size:12px;font-weight:700;color:var(--text-2);white-space:nowrap">{{ r.status }}</span>
+          </div>
+        </sc-for>
+        <sc-if value="{{ noRows }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:32px;text-align:center;font-size:13px;color:var(--text-2)">لا توجد نتائج مطابقة — عدّل البحث أو مستوى الأهلية</div>
+        </sc-if>
+      </div>
+      <div style="font-size:11px;color:var(--text-3);padding:0 6px">الترتيب والترشيحات مُولّدة تلقائيًا من الحمض المالي وسلوك الائتمان واستقرار الدخل وتطابق الهدف مع منتج التمويل.</div>
+    </div>
+  </div>
+
+  <!-- Customer side panel -->
+  <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeSel }}" style="position:fixed;inset:0;background:rgba(35,32,73,.32);z-index:40"></div>
+    <div style="position:fixed;left:0;top:0;bottom:0;width:412px;background:var(--surface);z-index:50;box-shadow:var(--sh-lg);border-radius:0 28px 28px 0;overflow-y:auto;animation:fdSlideIn .28s ease both">
+      <div style="padding:22px 24px;display:flex;flex-direction:column;gap:16px" dir="rtl">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:48px;height:48px;border-radius:16px;background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);display:grid;place-items:center;font-size:17px;font-weight:900;color:var(--primary)">{{ sel.initial }}</div>
+            <div>
+              <div style="font-size:17px;font-weight:900;color:var(--ink)">{{ sel.name }}</div>
+              <div style="font-size:11.5px;color:var(--text-2)">رقم العميل <span class="fd-num" style="font-weight:600">{{ sel.id }}</span></div>
+            </div>
+          </div>
+          <div onClick="{{ closeSel }}" style="width:30px;height:30px;border-radius:99px;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;color:var(--text-2);font-size:15px" style-hover="border-color:var(--primary);color:var(--primary)">×</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:18px;background:var(--surface-2);border-radius:20px;padding:16px 18px">
+          <div style="position:relative;width:78px;height:78px;flex:none">
+            <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--copper) 0 {{ sel.dna }}%,var(--primary-100) {{ sel.dna }}% 100%)"></div>
+            <div style="position:absolute;inset:6px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span class="fd-num" style="font-size:23px;font-weight:800;color:var(--ink);line-height:1">{{ sel.dna }}</span>
+              <span style="font-size:8.5px;font-weight:700;color:var(--text-3)">DNA</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:11px;font-weight:800;border-radius:99px;padding:4px 11px;background:{{ sel.eligBg }};color:{{ sel.eligColor }};width:fit-content">أهلية {{ sel.elig }}</span>
+            <div style="font-size:12px;color:var(--text-2)">احتمالية الموافقة</div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="fd-num" style="font-size:16px;font-weight:800;color:var(--success)">{{ sel.approval }}%</span>
+              <span style="width:90px;height:6px;border-radius:99px;background:var(--surface);overflow:hidden;display:block;border:1px solid var(--line-soft)"><span style="display:block;height:100%;width:{{ sel.approval }}%;border-radius:99px;background:var(--success);animation:fdGrow .8s ease both;transform-origin:right"></span></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="border:1px solid var(--line-soft);border-radius:16px;padding:12px 14px">
+            <div style="font-size:11px;font-weight:700;color:var(--text-3)">الدخل الشهري</div>
+            <div class="fd-num" style="font-size:17px;font-weight:800;color:var(--ink);margin-top:3px">{{ sel.incomeFmt }} <span style="font-size:10px;color:var(--text-3)">SAR</span></div>
+          </div>
+          <div style="border:1px solid var(--line-soft);border-radius:16px;padding:12px 14px">
+            <div style="font-size:11px;font-weight:700;color:var(--text-3)">الفائض الشهري</div>
+            <div class="fd-num" style="font-size:17px;font-weight:800;color:var(--success);margin-top:3px">{{ sel.surplusFmt }} <span style="font-size:10px;color:var(--text-3)">SAR</span></div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--line-soft);border-radius:18px;padding:14px 16px">
+          <div style="font-size:12px;font-weight:800;color:var(--text-2);margin-bottom:10px">هدف العميل</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:7px">
+            <span style="font-weight:800;color:var(--ink)">{{ sel.goal }}</span>
+            <span class="fd-num" style="font-weight:800;color:var(--primary)">{{ sel.prog }}%</span>
+          </div>
+          <div style="height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden"><div style="height:100%;width:{{ sel.prog }}%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--primary-600));animation:fdGrow .8s ease both;transform-origin:right"></div></div>
+          <div style="font-size:11px;color:var(--text-3);margin-top:6px">الإنجاز المستهدف: {{ sel.deadline }}</div>
+        </div>
+
+        <div style="background:linear-gradient(160deg,var(--primary-50),#fff);border:1px solid var(--primary-100);border-radius:18px;padding:14px 16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
+            <div style="display:flex;align-items:center;gap:7px">
+              <div style="width:6px;height:6px;border-radius:99px;background:var(--copper);animation:fdPulse 2s ease infinite"></div>
+              <span style="font-size:11.5px;font-weight:800;color:var(--copper)">لماذا يوصي الذكاء الاصطناعي بهذا التمويل؟</span>
+            </div>
+            <sc-if value="{{ sel.isLive }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size:9.5px;font-weight:800;color:var(--primary);background:var(--primary-50);border:1px solid var(--primary-100);border-radius:99px;padding:2px 8px;white-space:nowrap">مباشر</span>
+            </sc-if>
+          </div>
+          <sc-if value="{{ sel.liveLoading }}" hint-placeholder-val="{{ false }}">
+            <div class="fd-loading" style="height:13px;width:94%;margin-bottom:6px"></div>
+            <div class="fd-loading" style="height:13px;width:68%"></div>
+          </sc-if>
+          <sc-if value="{{ sel.reasonReady }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:12.5px;color:var(--ink-2);line-height:1.9;text-wrap:pretty">{{ sel.reason }}</div>
+          </sc-if>
+          <sc-if value="{{ sel.liveError }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;color:var(--danger);margin-top:6px">تعذّر تحميل التحليل المباشر — مُعروض تحليل تقديري بدلاً منه.</div>
+          </sc-if>
+        </div>
+
+        <div style="border:1.5px solid var(--copper);background:linear-gradient(170deg,rgba(217,184,106,.08),#fff);border-radius:18px;padding:14px 16px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <sc-if value="{{ sel.liveLoading }}" hint-placeholder-val="{{ false }}">
+              <div class="fd-loading" style="height:15px;width:110px"></div>
+            </sc-if>
+            <sc-if value="{{ sel.reasonReady }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size:13px;font-weight:800;color:var(--ink)">{{ sel.rec }}</span>
+            </sc-if>
+            <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Badge" tone="new" hint-size="50px,22px">الأنسب</x-import>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div>
+              <div style="font-size:10.5px;font-weight:700;color:var(--text-3)">المبلغ الموصى به</div>
+              <div class="fd-num" style="font-size:16px;font-weight:800;color:var(--ink);margin-top:2px">{{ sel.amountFmt }} <span style="font-size:10px;color:var(--text-3)">SAR</span></div>
+            </div>
+            <div>
+              <div style="font-size:10.5px;font-weight:700;color:var(--text-3)">فترة السداد الموصى بها</div>
+              <div style="font-size:14px;font-weight:800;color:var(--ink);margin-top:3px"><span class="fd-num">{{ sel.period }}</span> شهرًا</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px">
+          <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="copper" size="sm" on-click="{{ sel.sendOffer }}" disabled="{{ sel.offerBusy }}" dc-props="{{ btnFlex }}" hint-size="50%,38px">{{ sel.offerBtnLabel }}</x-import>
+          <sc-if value="{{ sel.hasHref }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ sel.href }}" style="flex:1;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:99px;padding:10px 16px;font-size:12.5px;font-weight:800;color:var(--primary);transition:border-color .2s" style-hover="border-color:var(--primary)">الملف الكامل ‹</a>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startProduct&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;p&quot;,&quot;h&quot;,&quot;c&quot;],&quot;default&quot;:&quot;p&quot;,&quot;section&quot;:&quot;العرض&quot;},&quot;campaignsOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;section&quot;:&quot;العرض&quot;},&quot;defaultMinDna&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:75,&quot;min&quot;:50,&quot;max&quot;:95,&quot;step&quot;:5,&quot;section&quot;:&quot;الحملات&quot;}}">
+class Component extends DCLogic {
+  state = {
+    product: this.props.startProduct ?? 'p',
+    query: '', sort: 'elig', eligFilter: 'all',
+    campaignOpen: this.props.campaignsOpen ?? true,
+    campMin: this.props.defaultMinDna ?? 75,
+    campGoal: 'all', campSentToday: 3,
+    campaign: { status: 'idle', attempted: 0, sent: 0, total: 0 },
+    offerStatus: {},
+    selected: null,
+    live: {},
+  };
+  // Only ahmed/sara are wired to the live agent — copied verbatim from the
+  // CUSTOMER_DATA blocks in their own dashboard files (same [UC4] payload
+  // shape), so the grounded numbers match exactly what those pages send.
+  DEMO_CUSTOMER_DATA = {
+    '100482913': { customer: {
+      id: "100482913", name: "أحمد السالم", salary: 15700, additional_income: 0, balance: 44400,
+      obligations: { car_loan: 1850, credit_cards: 650, monthly_bills: 780, personal_loan: 0, mortgage: 0 },
+      total_obligations: 3280, monthly_surplus: 3900, dna_score: 82, commitment_score: 96, risk_level: "low",
+      savings_rate: 0.12, income_stability: 0.94, dti_ratio: 0.21,
+      spending_behavior: { restaurant_spending: 1860, weekend_spending_pct: 0.38, late_payments_24m: 0, impulse_score: 27 },
+      loan_history: { car_loan_remaining: 44400, car_loan_monthly: 1850, on_time_payments_streak: 24 },
+      goals: [
+        { type: "car", name: "تويوتا كامري", target: 123000, saved: 52000, deadline: "2028-03", progress: 0.42 },
+        { type: "apartment", name: "شقة تمليك", target: 585000, saved: 70200, deadline: "2031-06", progress: 0.12 },
+        { type: "travel", name: "رحلة اليابان", target: 25000, saved: 17000, deadline: "2026-12", progress: 0.68 }
+      ]
+    } },
+    '100731544': { customer: {
+      id: "100731544", name: "سارة القحطاني", salary: 12400, additional_income: 0, balance: 8200,
+      obligations: { car_loan: 0, credit_cards: 1150, monthly_bills: 670, personal_loan: 2400, mortgage: 0 },
+      total_obligations: 4220, monthly_surplus: 1650, dna_score: 74, commitment_score: 88, risk_level: "medium",
+      savings_rate: 0.08, income_stability: 0.91, dti_ratio: 0.34,
+      spending_behavior: { restaurant_spending: 2100, weekend_spending_pct: 0.45, late_payments_24m: 1, impulse_score: 48 },
+      loan_history: { personal_loan_remaining: 57600, personal_loan_monthly: 2400, on_time_payments_streak: 9 },
+      goals: [
+        { type: "car", name: "سيارة هيونداي", target: 85000, saved: 29750, deadline: "2027-02", progress: 0.35 },
+        { type: "apartment", name: "مقدم شقة", target: 150000, saved: 13500, deadline: "2032-10", progress: 0.09 },
+        { type: "study", name: "دراسة ماجستير", target: 45000, saved: 23400, deadline: "2027-09", progress: 0.52 }
+      ]
+    } },
+  };
+  customers = [
+    { id:'100482913', name:'أحمد السالم', dna:82, income:15700, goal:'شراء سيارة', cat:'p', conf:92, last:'قبل 3 أيام', status:'مهتم', prog:42, deadline:'مارس 2028', href:'FinDNA Dashboard - Ahmed.dc.html' },
+    { id:'100640221', name:'عبدالله الغامدي', dna:91, income:22400, goal:'شراء سيارة', cat:'p', conf:95, last:'اليوم', status:'جديد', prog:31, deadline:'يناير 2027', href:'' },
+    { id:'100557810', name:'ريم الحربي', dna:88, income:18900, goal:'زواج', cat:'p', conf:93, last:'أمس', status:'تم التواصل', prog:55, deadline:'أكتوبر 2026', href:'' },
+    { id:'100104772', name:'فهد العتيبي', dna:68, income:11200, goal:'سفر', cat:'p', conf:74, last:'قبل أسبوع', status:'بانتظار الرد', prog:64, deadline:'ديسمبر 2026', href:'' },
+    { id:'100388102', name:'منى العنزي', dna:71, income:12600, goal:'مصاريف شخصية', cat:'p', conf:78, last:'قبل يومين', status:'تم التواصل', prog:20, deadline:'مايو 2027', href:'' },
+    { id:'100265087', name:'خالد الدوسري', dna:61, income:9800, goal:'سداد ديون', cat:'p', conf:66, last:'قبل أسبوعين', status:'جديد', prog:15, deadline:'سبتمبر 2027', href:'' },
+    { id:'100918330', name:'نوف الشمري', dna:55, income:7400, goal:'تعليم', cat:'p', conf:58, last:'قبل أسبوع', status:'جديد', prog:26, deadline:'أغسطس 2027', href:'' },
+    { id:'100731544', name:'سارة القحطاني', dna:74, income:14200, goal:'شراء منزل', cat:'h', conf:81, last:'أمس', status:'مهتم', prog:18, deadline:'يونيو 2031', href:'FinDNA Dashboard - Sara.dc.html' },
+    { id:'100812675', name:'لمى الزهراني', dna:90, income:26800, goal:'شراء منزل', cat:'h', conf:94, last:'اليوم', status:'عرض مُرسل', prog:34, deadline:'مارس 2030', href:'' },
+    { id:'100476093', name:'ماجد الشهري', dna:86, income:24100, goal:'بناء منزل', cat:'h', conf:90, last:'قبل يومين', status:'مهتم', prog:22, deadline:'يوليو 2030', href:'' },
+    { id:'100694518', name:'هند المطيري', dna:79, income:17500, goal:'شراء أرض', cat:'h', conf:84, last:'قبل 3 أيام', status:'تم التواصل', prog:41, deadline:'فبراير 2029', href:'' },
+    { id:'100352944', name:'سلطان البقمي', dna:66, income:13100, goal:'شراء منزل', cat:'h', conf:70, last:'قبل أسبوع', status:'بانتظار الرد', prog:9, deadline:'نوفمبر 2032', href:'' },
+    { id:'100207781', name:'ناصر السبيعي', dna:58, income:10400, goal:'بناء منزل', cat:'h', conf:60, last:'قبل أسبوعين', status:'جديد', prog:6, deadline:'أبريل 2033', href:'' },
+    { id:'100583366', name:'دانة السديري', dna:87, income:19600, goal:'عروض الشركاء', cat:'c', conf:91, last:'اليوم', status:'جديد', prog:48, deadline:'سبتمبر 2026', href:'' },
+    { id:'100429057', name:'يوسف المالكي', dna:84, income:16300, goal:'إلكترونيات', cat:'c', conf:89, last:'أمس', status:'مهتم', prog:57, deadline:'أكتوبر 2026', href:'' },
+    { id:'100761204', name:'جواهر الرشيد', dna:77, income:13800, goal:'أثاث', cat:'c', conf:82, last:'قبل يومين', status:'تم التواصل', prog:35, deadline:'ديسمبر 2026', href:'' },
+    { id:'100318649', name:'تركي الحارثي', dna:63, income:9200, goal:'أجهزة منزلية', cat:'c', conf:68, last:'قبل أسبوع', status:'بانتظار الرد', prog:12, deadline:'فبراير 2027', href:'' },
+    { id:'100895412', name:'بدر القرني', dna:52, income:6900, goal:'شراء بالتقسيط', cat:'c', conf:55, last:'قبل أسبوعين', status:'جديد', prog:8, deadline:'مايو 2027', href:'' },
+  ];
+  fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+  eligOf(dna){
+    if (dna >= 85) return { elig:'ممتازة', bg:'#e6f8f2', color:'#1a7a55' };
+    if (dna >= 75) return { elig:'عالية', bg:'#e6f8f2', color:'#3DBF8F' };
+    if (dna >= 60) return { elig:'متوسطة', bg:'#fdf3e3', color:'#a05c00' };
+    return { elig:'منخفضة', bg:'#fde8e7', color:'#8b2020' };
+  }
+  dnaColor(dna){ return dna >= 75 ? 'var(--success)' : dna >= 60 ? 'var(--copper)' : 'var(--danger)'; }
+  recOf(c){
+    if (c.cat === 'h') return 'تمويل عقاري';
+    if (c.cat === 'c') return 'تمويل استهلاكي';
+    return c.goal === 'شراء سيارة' ? 'تمويل مركبة' : 'تمويل شخصي';
+  }
+  reasonOf(c){
+    const base = `العميل يدّخر لهدف «${c.goal}»`;
+    if (c.dna >= 85) return `${base}، دخله مستقر، التزاماته منخفضة، وسجل سداده ممتاز على مدى 24 شهرًا — تطابق قوي جدًا مع هذا المنتج.`;
+    if (c.dna >= 75) return `${base}، دخله مستقر مع التزام جيد بالأقساط، والفائض الشهري يغطي القسط المقترح بأمان.`;
+    if (c.dna >= 60) return `${base}، لكن نسبة التزاماته الحالية متوسطة — يُنصح بمبلغ متحفّظ وفترة سداد أطول.`;
+    return `${base}، غير أن استقرار الدخل وسلوك الائتمان الحاليين يحدّان من الأهلية — يُنصح بمتابعة لاحقة بعد تحسّن المؤشرات.`;
+  }
+  amountOf(c){
+    const mult = c.cat === 'h' ? 55 : c.cat === 'c' ? 1.6 : 8;
+    return Math.round(c.income * mult * (c.dna / 100) / 1000) * 1000;
+  }
+  periodOf(c){ return c.cat === 'h' ? 240 : c.cat === 'c' ? 18 : 48; }
+  eligKeyFor(c){
+    if (c.cat === 'h') return 'mortgage';
+    if (c.goal === 'شراء سيارة') return 'car_loan';
+    return 'personal_loan';
+  }
+  async fetchLiveUC4(id){
+    const payload = this.DEMO_CUSTOMER_DATA[id];
+    if (!payload) return;
+    const existing = this.state.live[id];
+    if (existing && (existing.status === 'loading' || existing.status === 'done')) return;
+    this.setState({ live: { ...this.state.live, [id]: { status: 'loading' } } });
+    const _controller = new AbortController();
+    const _timeout = setTimeout(() => _controller.abort(), 180000);
+    try {
+      const res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: _controller.signal,
+        body: JSON.stringify({
+          model: 'findna-agent',
+          messages: [{ role: 'user', content: '[UC4]\n' + JSON.stringify(payload) }],
+          stream: false
+        })
+      });
+      // The endpoint always responds as text/event-stream (SSE), even with stream:false,
+      // so we read the raw body and stitch the delta.content chunks back together.
+      const raw = await res.text();
+      let text = '';
+      for (const line of raw.split('\n')) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data:')) continue;
+        const chunk = trimmed.slice(5).trim();
+        if (chunk === '[DONE]') continue;
+        let evt;
+        try { evt = JSON.parse(chunk); } catch { continue; }
+        const content = evt?.choices?.[0]?.delta?.content ?? evt?.choices?.[0]?.message?.content;
+        if (typeof content === 'string') text += content;
+      }
+      text = text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '');
+      const start = text.indexOf('{');
+      const end = text.lastIndexOf('}');
+      if (start === -1 || end === -1) throw new Error('No JSON found');
+      const r = JSON.parse(text.slice(start, end + 1));
+      this.setState({ live: { ...this.state.live, [id]: { status: 'done', data: r } } });
+    } catch (err) {
+      console.error('[FinDNA Employee] UC4 live fetch failed for', id, err);
+      this.setState({ live: { ...this.state.live, [id]: { status: 'error' } } });
+    } finally {
+      clearTimeout(_timeout);
+    }
+  }
+  // Static decorate() fields, overridden with the live [UC4] response only
+  // when this is a demo customer AND that fetch has already finished —
+  // never blocks on an in-flight or not-yet-started fetch.
+  liveDataFor(c){
+    const base = this.decorate(c);
+    if (this.DEMO_CUSTOMER_DATA[c.id]) {
+      const liveEntry = this.state.live[c.id];
+      if (liveEntry && liveEntry.status === 'done') {
+        const r = liveEntry.data || {};
+        const topRec = Array.isArray(r.recommendations) && r.recommendations.length ? r.recommendations[0] : null;
+        if (topRec && topRec.reason) base.reason = topRec.reason;
+        else if (r.summary) base.reason = r.summary;
+        if (topRec && topRec.title) base.rec = topRec.title;
+        const eligEntry = r.eligibility ? r.eligibility[this.eligKeyFor(c)] : null;
+        if (eligEntry && eligEntry.max_amount != null) base.amountFmt = this.fmt(eligEntry.max_amount);
+      }
+    }
+    return base;
+  }
+  composeOfferMessage(c){
+    const d = this.liveDataFor(c);
+    return `عرض تمويل لـ ${d.name}: ${d.rec} بمبلغ ${d.amountFmt} ريال على ${d.period} شهرًا. ${d.reason}`;
+  }
+  // [SEND_OFFER] passthrough — agent.py skips the LLM entirely for this
+  // trigger and just relays `message` straight to _send_sms, so this call
+  // is fast (Twilio only, no generation) and doesn't need the 180s budget
+  // the [UC*] calls use.
+  async sendOfferPayload(message){
+    const _controller = new AbortController();
+    const _timeout = setTimeout(() => _controller.abort(), 30000);
+    try {
+      const res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: _controller.signal,
+        body: JSON.stringify({
+          model: 'findna-agent',
+          messages: [{ role: 'user', content: '[SEND_OFFER]\n' + JSON.stringify({ message }) }],
+          stream: false
+        })
+      });
+      const raw = await res.text();
+      let text = '';
+      for (const line of raw.split('\n')) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data:')) continue;
+        const chunk = trimmed.slice(5).trim();
+        if (chunk === '[DONE]') continue;
+        let evt;
+        try { evt = JSON.parse(chunk); } catch { continue; }
+        const content = evt?.choices?.[0]?.delta?.content ?? evt?.choices?.[0]?.message?.content;
+        if (typeof content === 'string') text += content;
+      }
+      text = text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '');
+      const start = text.indexOf('{');
+      const end = text.lastIndexOf('}');
+      if (start === -1 || end === -1) throw new Error('No JSON found');
+      const r = JSON.parse(text.slice(start, end + 1));
+      return { sent: !!r.sent, error: r.error || null };
+    } catch (err) {
+      return { sent: false, error: (err && err.message) || 'network error' };
+    } finally {
+      clearTimeout(_timeout);
+    }
+  }
+  // Individual popup's "تقديم عرض" button. Guards against the same
+  // triple-send issue hit on the UC5 button earlier: bail immediately if a
+  // send for this customer is already in flight, and disable the button
+  // via offerBusy for the same window.
+  async sendOfferFor(c){
+    if (this.state.offerStatus[c.id] === 'sending') return;
+    this.setState({ offerStatus: { ...this.state.offerStatus, [c.id]: 'sending' } });
+    const result = await this.sendOfferPayload(this.composeOfferMessage(c));
+    if (!this._offerTimers) this._offerTimers = {};
+    clearTimeout(this._offerTimers[c.id]);
+    this.setState({ offerStatus: { ...this.state.offerStatus, [c.id]: result.sent ? 'sent' : 'error' } });
+    this._offerTimers[c.id] = setTimeout(() => {
+      const next = { ...this.state.offerStatus };
+      delete next[c.id];
+      this.setState({ offerStatus: next });
+    }, 2600);
+  }
+  // Campaign button: same guard (bail if already sending), sends strictly
+  // sequentially (awaited one at a time, not Promise.all) so WhatsApp
+  // messages can't arrive out of order or overlap.
+  async sendCampaignOffers(customers){
+    if (this.state.campaign.status === 'sending') return;
+    const total = customers.length;
+    this.setState({ campaign: { status: 'sending', attempted: 0, sent: 0, total } });
+    let sent = 0;
+    for (let i = 0; i < customers.length; i++) {
+      const result = await this.sendOfferPayload(this.composeOfferMessage(customers[i]));
+      if (result.sent) sent++;
+      this.setState({ campaign: { status: 'sending', attempted: i + 1, sent, total } });
+    }
+    this.setState({ campaign: { status: 'done', attempted: total, sent, total }, campSentToday: this.state.campSentToday + 1 });
+  }
+  decorate(c){
+    const e = this.eligOf(c.dna);
+    return { ...c, ...e, eligBg: e.bg, eligColor: e.color, dnaColor: this.dnaColor(c.dna),
+      rec: this.recOf(c), reason: this.reasonOf(c), initial: c.name[0],
+      approval: Math.min(96, c.dna + 9), incomeFmt: this.fmt(c.income),
+      surplusFmt: this.fmt(c.income * 0.25), amountFmt: this.fmt(this.amountOf(c)),
+      period: this.periodOf(c), hasHref: !!c.href };
+  }
+  renderVals(){
+    const s = this.state;
+    const active = (k) => s.product === k;
+    const pool = this.customers.filter(c => c.cat === s.product);
+    const eligibleCount = (k) => this.customers.filter(c => c.cat === k && c.dna >= 60).length;
+    const prodStyles = (k) => active(k)
+      ? { Border:'var(--primary)', Bg:'var(--primary-50)', Color:'var(--primary)', IconBg:'var(--primary)', IconColor:'#fff', CountBg:'var(--primary)', CountColor:'#fff' }
+      : { Border:'transparent', Bg:'transparent', Color:'var(--ink)', IconBg:'var(--surface-2)', IconColor:'var(--text-2)', CountBg:'var(--surface-2)', CountColor:'var(--text-2)' };
+    const labels = { p:'تمويل شخصي', h:'تمويل عقاري', c:'تمويل استهلاكي' };
+
+    const q = s.query.trim();
+    let rows = pool.map(c => this.decorate(c));
+    if (q) rows = rows.filter(c => c.name.includes(q) || c.id.includes(q));
+    if (s.eligFilter !== 'all') rows = rows.filter(c => c.elig === s.eligFilter);
+    const sorters = { elig: (a,b)=>b.dna-a.dna, dna:(a,b)=>b.dna-a.dna, income:(a,b)=>b.income-a.income, conf:(a,b)=>b.conf-a.conf };
+    rows.sort(sorters[s.sort] || sorters.elig);
+    rows = rows.map(c => ({ ...c,
+      rowBg: s.selected === c.id ? 'var(--primary-50)' : 'transparent',
+      select: () => {
+        this.setState({ selected: c.id });
+        if (this.DEMO_CUSTOMER_DATA[c.id]) this.fetchLiveUC4(c.id);
+      } }));
+
+    const eligible = pool.filter(c => c.dna >= 60);
+    const avg = (arr, f) => arr.length ? Math.round(arr.reduce((t,c)=>t+f(c),0)/arr.length) : 0;
+    const goalCounts = {};
+    pool.forEach(c => goalCounts[c.goal] = (goalCounts[c.goal]||0)+1);
+    const topGoal = Object.entries(goalCounts).sort((a,b)=>b[1]-a[1])[0] || ['—',0];
+
+    const matches = pool.filter(c => c.dna >= s.campMin && (s.campGoal === 'all' || c.goal === s.campGoal));
+    const mAvg = avg(matches, c=>c.dna);
+    const mApproval = matches.length ? Math.min(96, mAvg + 9) : 0;
+    const goals = [...new Set(pool.map(c=>c.goal))];
+    const chip = (activeCond, label, onClick) => ({ label,
+      border: activeCond ? 'var(--primary)' : 'var(--line)',
+      bg: activeCond ? 'var(--primary)' : 'var(--surface)',
+      color: activeCond ? '#fff' : 'var(--text-2)', select: onClick });
+    const tiers = [ ['ممتازة',85], ['عالية',75], ['متوسطة',60], ['منخفضة',50] ];
+    const eligLevels = ['الكل','ممتازة','عالية','متوسطة','منخفضة'];
+
+    const selC = pool.find(c => c.id === s.selected);
+    const selectProduct = (k) => this.setState({ product:k, selected:null, eligFilter:'all', campGoal:'all', campaign:{status:'idle',attempted:0,sent:0,total:0}, query:'' });
+
+    // ahmed/sara only: overlay the live [UC4] response onto the popup's
+    // reasoning + best-product content once it arrives. Every other row
+    // stays exactly on decorate()'s static formulas, untouched.
+    let sel = {};
+    if (selC) {
+      sel = this.liveDataFor(selC);
+      if (this.DEMO_CUSTOMER_DATA[selC.id]) {
+        const liveEntry = s.live[selC.id];
+        const status = liveEntry ? liveEntry.status : 'loading';
+        sel.isLive = true;
+        sel.liveLoading = status === 'loading';
+        sel.liveError = status === 'error';
+        sel.reasonReady = status !== 'loading';
+      } else {
+        sel.reasonReady = true;
+      }
+      const offerState = s.offerStatus[selC.id];
+      sel.offerBusy = offerState === 'sending';
+      sel.offerBtnLabel = offerState === 'sending' ? 'جارٍ الإرسال...'
+        : offerState === 'sent' ? 'تم الإرسال ✓'
+        : offerState === 'error' ? 'تعذّر الإرسال ✗'
+        : 'تقديم عرض';
+      sel.sendOffer = () => this.sendOfferFor(selC);
+    }
+
+    const vals = {};
+    [['p','p'],['h','h'],['c','c']].forEach(([k,prefix]) => {
+      const st = prodStyles(k);
+      Object.entries(st).forEach(([key,v]) => { vals[prefix + key] = v; });
+    });
+    Object.assign(vals, {
+      selP: () => selectProduct('p'), selH: () => selectProduct('h'), selC: () => selectProduct('c'),
+      countP: eligibleCount('p'), countH: eligibleCount('h'), countC: eligibleCount('c'),
+      productLabel: labels[s.product],
+      kpiEligible: eligible.length, kpiTotal: pool.length,
+      kpiAvgDna: avg(pool, c=>c.dna),
+      kpiTopGoal: topGoal[0], kpiTopGoalCount: topGoal[1],
+      kpiConv: Math.round(avg(eligible, c=>c.conf) * 0.44),
+      campaignOpen: s.campaignOpen, chevRot: s.campaignOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      toggleCampaign: () => this.setState({ campaignOpen: !s.campaignOpen }),
+      campSentToday: s.campSentToday,
+      campMin: s.campMin, setCampMin: (e) => this.setState({ campMin: +e.target.value, campaign:{status:'idle',attempted:0,sent:0,total:0} }),
+      tierChips: tiers.map(([l,v]) => chip(s.campMin === v, `${l} ${v}+`, () => this.setState({ campMin:v, campaign:{status:'idle',attempted:0,sent:0,total:0} }))),
+      campGoalChips: [ chip(s.campGoal==='all','كل الأهداف',()=>this.setState({campGoal:'all',campaign:{status:'idle',attempted:0,sent:0,total:0}})),
+        ...goals.map(g => chip(s.campGoal===g, g, ()=>this.setState({campGoal:g,campaign:{status:'idle',attempted:0,sent:0,total:0}}))) ],
+      campTierCount: pool.filter(c => c.dna >= s.campMin).length,
+      campCount: matches.length, campAvgDna: mAvg, campApproval: mApproval,
+      campConv: Math.round(mApproval * 0.44), campConfidence: matches.length ? Math.min(94, mAvg + 5) : 0,
+      campIdle: s.campaign.status === 'idle' && matches.length > 0,
+      campSending: s.campaign.status === 'sending',
+      campDone: s.campaign.status === 'done',
+      campAttempted: s.campaign.attempted, campSentCount: s.campaign.sent, campTotalSent: s.campaign.total,
+      campFailedCount: Math.max(0, s.campaign.total - s.campaign.sent),
+      sendCampaign: () => this.sendCampaignOffers(matches),
+      query: s.query, onQuery: (e) => this.setState({ query: e.target.value }),
+      sort: s.sort, onSort: (e) => this.setState({ sort: e.target.value }),
+      eligChips: eligLevels.map(l => chip(
+        (s.eligFilter === 'all' && l === 'الكل') || s.eligFilter === l, l,
+        () => this.setState({ eligFilter: l === 'الكل' ? 'all' : l }))),
+      rows, noRows: rows.length === 0,
+      hasSel: !!selC, closeSel: () => this.setState({ selected: null }),
+      sel,
+      btnFlex: { style: { flex: 1, justifyContent: 'center' } },
+    });
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

@@ -275,6 +275,7 @@
         <sc-if value="{{ budgetOk }}" hint-placeholder-val="{{ true }}">
           <div style="margin-top:8px;font-size:12px;color:var(--text-3)">محسوبة من دخلك والتزاماتك وأهدافك — لا ميزانية عامة</div>
         </sc-if>
+        <button onClick="{{ sendSpendingAlert }}" disabled="{{ alertSending }}" style="margin-top:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;padding:8px 14px;border-radius:99px;cursor:pointer;transition:.2s;width:100%">تنبيه الإنفاق 🔔</button>
       </div>
 
       <div>
@@ -450,7 +451,7 @@
           <div style="display:flex;gap:8px"><span style="color:var(--danger)">●</span>مصروف المطاعم أعلى من مثيلك بـ 34٪</div>
           <div style="display:flex;gap:8px"><span style="color:var(--danger)">●</span>38٪ من إنفاقك يتركز في نهاية الأسبوع</div>
         </div>
-        <div style="font-size:14px;font-weight:800;color:var(--primary);margin:16px 0 10px">توصيات</div>
+        <div style="font-size:14px;font-weight:800;color:var(--primary);margin:16px 0 10px">أفكار لتحسين الإدارة المالية</div>
         <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink-2);line-height:1.6">
           <div style="display:flex;gap:8px"><span class="fd-num" style="color:var(--primary);font-weight:700">1</span>خفّض مصروف المطاعم 300 ريال شهريًا</div>
           <div style="display:flex;gap:8px"><span class="fd-num" style="color:var(--primary);font-weight:700">2</span>حوّل 500 ريال شهريًا إلى الاستثمار</div>
@@ -987,6 +988,7 @@ class Component extends DCLogic {
     dnaStrengths: '',
     dnaWeaknesses: '',
     dnaRecommendations: '',
+    sendingAlert: false,
   };
 
   num(s) {
@@ -1148,6 +1150,62 @@ class Component extends DCLogic {
     }
   }
 
+  // UC5 — daily spending alert. The agent both writes the Arabic SMS text
+  // and sends it via Twilio server-side (see hackthon/agent.py); this only
+  // ever talks to the agent endpoint, never to Twilio directly, so no
+  // Twilio credentials exist anywhere in this file.
+  async _sendSpendingAlert() {
+    if (this.state.sendingAlert) return;
+    this.setState({ sendingAlert: true });
+    const SPENDING_DATA_UC5 = {
+      customer: { name: "أحمد السالم" },
+      today_spending: { "مطاعم": 1860, daily_limit: 1600, exceeded_by: 260, remaining_budget: -260 }
+    };
+
+    const _controller = new AbortController();
+    const _timeout = setTimeout(() => _controller.abort(), 180000);
+    try {
+      const res = await fetch('https://findna-agent.cycls.ai/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: _controller.signal,
+        body: JSON.stringify({
+          model: 'findna-agent',
+          messages: [{ role: 'user', content: '[UC5]\n' + JSON.stringify(SPENDING_DATA_UC5) }],
+          stream: false
+        })
+      });
+      const raw = await res.text();
+      let text = '';
+      for (const line of raw.split('\n')) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data:')) continue;
+        const payload = trimmed.slice(5).trim();
+        if (payload === '[DONE]') continue;
+        let evt;
+        try { evt = JSON.parse(payload); } catch { continue; }
+        const content = evt?.choices?.[0]?.delta?.content ?? evt?.choices?.[0]?.message?.content;
+        if (typeof content === 'string') text += content;
+      }
+      text = text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '');
+      const start = text.indexOf('{');
+      const end   = text.lastIndexOf('}');
+      const r = JSON.parse(text.slice(start, end + 1));
+
+      this.showToast(r.sms_sent ? '✅ تم إرسال تنبيه الإنفاق على رقمك' : '❌ فشل إرسال التنبيه — ' + (r.sms_error || 'خطأ غير معروف'));
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        console.warn('[FinDNA App] UC5 request timed out after 3 minutes');
+      } else {
+        console.error('[FinDNA App] UC5 ❌', err);
+      }
+      this.showToast('❌ فشل إرسال التنبيه');
+    } finally {
+      clearTimeout(_timeout);
+      this.setState({ sendingAlert: false });
+    }
+  }
+
   renderVals() {
     const s = this.state;
     const screen = s.screen;
@@ -1179,7 +1237,7 @@ class Component extends DCLogic {
 
     const presets = [
       ['سيارة', '120,000'], ['منزل', '600,000'], ['زواج', '150,000'],
-      ['سفر', '25,000'], ['استثمار', '50,000'], ['تقاعد', '1,000,000'], ['تعليم', '80,000'],
+      ['سفر', '25,000'], ['استثمار', '50,000'], ['تقاعد', '1,000,000'], ['تعليم', '80,000'], ['أخرى', '0'],
     ];
     const goalPresets = presets.map(([label, amount]) => ({
       label,
@@ -1365,6 +1423,8 @@ class Component extends DCLogic {
       budgetNumColor: exceeded ? 'var(--danger)' : 'var(--ink)',
       budgetExceeded: exceeded,
       budgetOk: !exceeded,
+      sendSpendingAlert: () => this._sendSpendingAlert(),
+      alertSending: s.sendingAlert,
       simSalary: () => {
         this.setState({ balanceDelta: s.balanceDelta + 14500, stacksBoost: true });
         clearTimeout(this._stackT);

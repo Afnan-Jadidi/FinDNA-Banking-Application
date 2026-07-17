@@ -401,7 +401,7 @@
           </div>
         </div>
         <div>
-          <div style="font-size:17px;font-weight:900;color:var(--ink)">{{ dnaPersonality }}</div>
+          <div style="font-size:17px;font-weight:900;color:var(--ink)">متوازن</div>
           <div style="font-size:12.5px;color:var(--text-2);line-height:1.7;margin-top:4px;text-wrap:pretty">شخصيتك المالية تميل للادخار المنتظم مع التزام استثنائي بالأقساط، وحذر من المخاطرة.</div>
         </div>
       </div>
@@ -491,9 +491,11 @@
         <div style="font-size:14px;color:var(--ink-2);line-height:1.85;margin-top:10px;text-wrap:pretty">{{ aiMorningBriefing }}</div>
       </div>
 
+      <sc-if value="{{ hasAnyRec }}" hint-placeholder-val="{{ true }}">
       <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:12px">
         <div style="font-size:14px;font-weight:800;color:var(--ink)">توصيات اليوم</div>
 
+        <sc-if value="{{ hasRec1 }}" hint-placeholder-val="{{ true }}">
         <div style="border:1px solid var(--line-soft);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px">
           <div style="flex:1">
             <div style="font-size:13px;font-weight:700;color:var(--ink)">{{ aiRec1Title }}</div>
@@ -506,7 +508,9 @@
             <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" on-click="{{ applyRec1 }}" hint-size="64px,34px">طبّق</x-import>
           </sc-if>
         </div>
+        </sc-if>
 
+        <sc-if value="{{ hasRec2 }}" hint-placeholder-val="{{ true }}">
         <div style="border:1px solid var(--line-soft);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px">
           <div style="flex:1">
             <div style="font-size:13px;font-weight:700;color:var(--ink)">{{ aiRec2Title }}</div>
@@ -519,7 +523,9 @@
             <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" on-click="{{ applyRec2 }}" hint-size="64px,34px">طبّق</x-import>
           </sc-if>
         </div>
+        </sc-if>
 
+        <sc-if value="{{ hasRec3 }}" hint-placeholder-val="{{ true }}">
         <div style="border:1px solid var(--line-soft);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px">
           <div style="flex:1">
             <div style="font-size:13px;font-weight:700;color:var(--ink)">{{ aiRec3Title }}</div>
@@ -532,7 +538,9 @@
             <x-import component-from-global-scope="FinDNADesignSystem_beecc4.Button" variant="soft" size="sm" on-click="{{ applyRec3 }}" hint-size="64px,34px">طبّق</x-import>
           </sc-if>
         </div>
+        </sc-if>
       </div>
+      </sc-if>
 
       <div style="background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--sh-sm)">
         <div style="font-size:14px;font-weight:800;color:var(--ink);margin-bottom:14px">ملخص الأسبوع</div>
@@ -1534,6 +1542,10 @@ class Component extends DCLogic {
       aiRec2Subtitle: s.aiRec2Subtitle,
       aiRec3Title: s.aiRec3Title,
       aiRec3Subtitle: s.aiRec3Subtitle,
+      hasRec1: !!s.aiRec1Title,
+      hasRec2: !!s.aiRec2Title,
+      hasRec3: !!s.aiRec3Title,
+      hasAnyRec: !!(s.aiRec1Title || s.aiRec2Title || s.aiRec3Title),
       aiLoaded: s.aiLoaded,
       dnaPersonality: s.dnaPersonality,
       dnaStrengths: s.dnaStrengths,
